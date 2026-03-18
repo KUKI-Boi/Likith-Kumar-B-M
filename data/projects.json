@@ -1,35 +1,46 @@
 [
     {
         "title": "Hybrid Energy Storage System",
-        "description": "Intelligent power splitting between battery and supercapacitor for EV efficiency.",
-        "tags": ["JavaScript", "Energy Management", "EV Systems"],
-        "github": "https://github.com/KUKI-Boi/Likith-Kumar-B-M",
+        "description": "Designed a hybrid energy system combining batteries and supercapacitors to improve power delivery and efficiency in electric vehicles.",
+        "tags": ["JavaScript", "Energy Management", "EV Systems", "Supercapacitors"],
+        "github": "https://github.com/KUKI-Boi",
         "narrative": {
-            "challenge": "Handling high-frequency power peaks during EV acceleration that degrade battery life.",
-            "solution": "Developed a real-time EMS using a Rule-Based logic to shunt peak currents to a supercapacitor bank.",
-            "impact": "Theoretical battery lifecycle extension of 15% and improved regenerative braking efficiency."
+            "challenge": "Standard battery packs degrade under high-frequency power peaks during EV acceleration and regenerative braking.",
+            "solution": "Designed a hybrid system combining batteries and supercapacitors with a real-time energy management strategy to split power demands intelligently.",
+            "impact": "Improved power delivery efficiency and extended theoretical battery lifecycle by reducing peak current stress on the main pack."
         }
     },
     {
         "title": "Regenerative Suspension System",
-        "description": "Electromagnetic energy harvesting from road vibrations.",
+        "description": "Developed a system to convert suspension movement into usable electrical energy, improving overall vehicle efficiency.",
         "tags": ["MATLAB/Simulink", "Electromagnetic Design", "Energy Harvesting"],
-        "github": "https://github.com/KUKI-Boi/Likith-Kumar-B-M",
+        "github": "https://github.com/KUKI-Boi",
         "narrative": {
-            "challenge": "Lost kinetic energy in standard suspension dampers during rough road travel.",
-            "solution": "Designed a linear electromagnetic generator (EMG) integrated into the strut assembly.",
-            "impact": "Harvested up to 200W of ancillary power, directly recharging the low-voltage onboard systems."
+            "challenge": "Kinetic energy from road vibrations is completely wasted in conventional passive damper systems.",
+            "solution": "Developed a linear electromagnetic generator integrated into the suspension strut assembly, converting vertical oscillations into electrical energy.",
+            "impact": "Successfully harvested ancillary power from suspension travel, directly feeding low-voltage onboard systems and improving overall vehicle efficiency."
         }
     },
     {
-        "title": "Altitude Hold Control System",
-        "description": "High-precision PID control for quadrotor UAV stability.",
-        "tags": ["Control Theory", "PID Controllers", "Embedded C"],
-        "github": "https://github.com/KUKI-Boi/Likith-Kumar-B-M",
+        "title": "Altitude Hold System",
+        "description": "Built a control-based system to maintain stable altitude using feedback mechanisms.",
+        "tags": ["Control Theory", "PID Controllers", "Embedded C", "Sensors"],
+        "github": "https://github.com/KUKI-Boi",
         "narrative": {
-            "challenge": "Maintaining millimeter-level hover accuracy in turbulent outdoor environments.",
-            "solution": "Implemented a cascaded PID loop with complementary filter sensor fusion for IMU data.",
-            "impact": "Stable hover within ±5cm error margin during 15km/h wind gusts."
+            "challenge": "Maintaining precise altitude stability in the presence of external disturbances and sensor noise.",
+            "solution": "Implemented a cascaded PID control loop with complementary filter-based sensor fusion for accurate altitude estimation and correction.",
+            "impact": "Achieved stable altitude hold with minimal drift, demonstrating robust feedback control under variable conditions."
+        }
+    },
+    {
+        "title": "Z-Bus Matrix Tool",
+        "description": "Created a computational tool for power system network analysis and impedance calculations.",
+        "tags": ["Python", "Power Systems", "Numerical Methods"],
+        "github": "https://github.com/KUKI-Boi",
+        "narrative": {
+            "challenge": "Manual computation of impedance matrices for power system networks is error-prone and time-consuming.",
+            "solution": "Built a Python-based computational tool that automates Z-Bus matrix formation using building algorithms for any given network topology.",
+            "impact": "Reduced analysis time significantly and provided accurate impedance calculations for fault analysis and power flow studies."
         }
     }
 ]

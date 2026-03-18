@@ -1,5 +1,6 @@
 /* ============================================
    SkillList Component — SkillList.js
+   Dynamic rendering of real skill categories.
    ============================================ */
 
 import { Component } from '../core/Component.js';
@@ -11,15 +12,30 @@ export class SkillList extends Component {
             categories: [
                 {
                     title: 'Programming',
-                    items: ['JavaScript (ES6+)', 'Python', 'C / Embedded C', 'MATLAB', 'HTML & CSS']
+                    skills: ['Python', 'C']
                 },
                 {
-                    title: 'Tools & Platforms',
-                    items: ['MATLAB / Simulink', 'Git & GitHub', 'VS Code', 'Arduino / ESP32', 'Figma']
+                    title: 'Tools & Software',
+                    skills: ['MATLAB', 'AutoCAD Electrical']
                 },
                 {
-                    title: 'Domains',
-                    items: ['Electric Vehicle Systems', 'Control Systems Design', 'Energy Storage & Management', 'Intelligent Mobility', 'Power Electronics']
+                    title: 'Engineering Domains',
+                    skills: [
+                        'Electric Vehicles',
+                        'Control Systems',
+                        'Energy Systems',
+                        'Embedded Systems',
+                        'IoT'
+                    ]
+                },
+                {
+                    title: 'Soft Skills',
+                    skills: [
+                        'Critical Thinking',
+                        'Time Management',
+                        'Teamwork',
+                        'Technical Communication'
+                    ]
                 }
             ]
         };
@@ -27,13 +43,13 @@ export class SkillList extends Component {
 
     render() {
         return `
-            <div class="skills__grid l-grid l-grid--auto">
+            <div class="l-grid l-grid--auto" style="margin-top: var(--space-xl);">
                 ${this.state.categories.map((category, index) => `
-                    <div class="skill-group" data-stagger-item data-stagger-index="${index}">
+                    <div class="skill-group" data-animate data-stagger-index="${index}">
                         <h3 class="skill-group__title">${category.title}</h3>
-                        <ul class="skill-group__list" role="list">
-                            ${category.items.map(item => `
-                                <li class="skill-group__item">${item}</li>
+                        <ul class="skill-group__list">
+                            ${category.skills.map(skill => `
+                                <li class="skill-group__item">${skill}</li>
                             `).join('')}
                         </ul>
                     </div>
