@@ -44,7 +44,7 @@ export class SkillList extends Component {
     render() {
         return `
             <div class="l-grid l-grid--auto" style="margin-top: var(--space-xl);">
-                ${this.state.categories.map((category, index) => `
+                ${(this.state.categories || []).map((category, index) => `
                     <div class="skill-group" data-animate data-stagger-index="${index}">
                         <h3 class="skill-group__title">${category.title}</h3>
                         <ul class="skill-group__list">

@@ -71,7 +71,7 @@ export function initSmoothScroll() {
         const targetEl = qs(targetId);
         if (targetEl) {
             e.preventDefault();
-            const headerHeight = qs('.header')?.offsetHeight || 0;
+            const headerHeight = qs('.navbar')?.offsetHeight || 0;
             const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
             window.scrollTo({

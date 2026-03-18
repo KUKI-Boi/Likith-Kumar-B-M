@@ -152,6 +152,39 @@
     .project-story-item__image { height: 280px; }
 }
 
+.project-placeholder-glow {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--clr-bg-elevated) 0%, var(--clr-bg-surface) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--clr-text-muted);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-placeholder-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    animation: placeholder-shimmer 3s infinite;
+}
+
+@keyframes placeholder-shimmer {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
 .project-story-item__header {
     position: relative;
     z-index: 1;

@@ -52,29 +52,29 @@ export class ProjectList extends Component {
                         <div class="project-story-item__image">
                             ${project.image
                                 ? `<img src="${project.image}" alt="${project.title}" loading="lazy" />`
-                                : `<span>[ ${project.title} — Visual Preview ]</span>`
+                                : `<div class="project-placeholder-glow"><span>Visual Preview — ${project.title}</span></div>`
                             }
                         </div>
 
                         <div class="project-story-item__header">
                             <h3 class="project-story-item__title">${project.title}</h3>
                             <div class="project-card__tags">
-                                ${project.tags.map(tag => `<span class="project-card__tag">${tag}</span>`).join('')}
+                                ${(project.tags || []).map(tag => `<span class="project-card__tag">${tag}</span>`).join('')}
                             </div>
                         </div>
 
                         <div class="project-story-item__content l-grid l-grid--3-cols">
                             <div class="story-block">
                                 <h4 class="story-block__label">The Challenge</h4>
-                                <p class="story-block__text">${project.narrative.challenge}</p>
+                                <p class="story-block__text">${project.narrative?.challenge || 'Solving complex engineering constraints.'}</p>
                             </div>
                             <div class="story-block u-accent-border">
                                 <h4 class="story-block__label">The Solution</h4>
-                                <p class="story-block__text">${project.narrative.solution}</p>
+                                <p class="story-block__text">${project.narrative?.solution || 'Implementing robust control and energy logic.'}</p>
                             </div>
                             <div class="story-block">
                                 <h4 class="story-block__label">The Impact</h4>
-                                <p class="story-block__text">${project.narrative.impact}</p>
+                                <p class="story-block__text">${project.narrative?.impact || 'Ensuring scalable, real-world mobility solutions.'}</p>
                             </div>
                         </div>
 
