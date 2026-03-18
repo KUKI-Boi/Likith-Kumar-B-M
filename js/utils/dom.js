@@ -31,10 +31,10 @@ export function initScrollAnimations() {
                     const children = qsa('[data-stagger-item]', el);
                     children.forEach((child, index) => {
                         child.style.animationDelay = `${(index + 1) * 100}ms`;
-                        child.classList.add('visible');
+                        child.classList.add('is-visible');
                     });
                 } else {
-                    el.classList.add('visible');
+                    el.classList.add('is-visible');
                 }
 
                 observer.unobserve(el);
