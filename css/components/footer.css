@@ -1,0 +1,40 @@
+/* ============================================
+   Footer — footer.css
+   ============================================ */
+
+.footer {
+    padding-block: var(--space-2xl);
+    border-top: 1px solid var(--clr-border);
+    background-color: var(--clr-bg-primary);
+}
+
+.footer__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    text-align: center;
+}
+
+.footer__text {
+    font-size: var(--fs-base);
+    color: var(--clr-text-secondary);
+}
+
+.footer__text strong {
+    color: var(--clr-text-primary);
+    font-weight: var(--fw-semibold);
+}
+
+.footer__copyright {
+    font-size: var(--fs-xs);
+    color: var(--clr-text-muted);
+}
+
+@media (min-width: 768px) {
+    .footer__inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}

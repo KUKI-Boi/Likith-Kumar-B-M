@@ -1,0 +1,106 @@
+/* ============================================
+   Header & Navbar — navbar.css
+   ============================================ */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar {
+    padding-block: var(--space-md);
+    background-color: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--clr-border);
+    transition: padding var(--transition-base);
+}
+
+.navbar__logo {
+    font-family: var(--font-display);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-bold);
+    color: var(--clr-text-primary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.navbar__logo-accent {
+    font-weight: var(--fw-light);
+    opacity: 0.6;
+}
+
+.navbar__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: var(--space-lg) var(--space-md);
+    background-color: var(--clr-bg-secondary);
+    border-bottom: 1px solid var(--clr-border);
+    flex-direction: column;
+    gap: var(--space-md);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-base),
+                transform var(--transition-base);
+}
+
+.navbar__links--open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.navbar__link {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--clr-text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.navbar__link:hover {
+    color: var(--clr-text-primary);
+}
+
+.navbar__link--cta {
+    padding: 0.5em 1.25em;
+    color: var(--clr-bg-primary);
+    background-color: var(--clr-text-primary);
+    border-radius: var(--radius-sm);
+}
+
+.navbar__link--cta:hover {
+    background-color: var(--clr-accent-primary);
+    color: var(--clr-bg-primary);
+}
+
+.navbar__toggle {
+    display: none; /* Mobile toggle handled in Phase 4 JS */
+}
+
+@media (max-width: 767px) {
+    .navbar__inner {
+        padding-inline: var(--space-md);
+    }
+
+    .navbar__links {
+        display: none; /* Hide for mobile till JS implemented */
+    }
+
+    .navbar__toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .navbar__toggle-bar {
+        width: 24px;
+        height: 1px;
+        background-color: var(--clr-text-primary);
+    }
+}

@@ -1,0 +1,38 @@
+/* ============================================
+   Section Layout — sections.css
+   ============================================ */
+
+.section {
+    padding-block: var(--space-3xl);
+}
+
+/* On mobile, slightly less padding */
+@media (max-width: 767px) {
+    .section {
+        padding-block: var(--space-2xl);
+    }
+}
+
+.section__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    color: var(--clr-text-primary);
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
+}
+
+.section__subtitle {
+    font-size: var(--fs-base);
+    color: var(--clr-text-secondary);
+    max-width: 60ch;
+    margin-bottom: var(--space-xl);
+}
+
+.section--center {
+    text-align: center;
+}
+
+.section--center .section__subtitle {
+    margin-inline: auto;
+}

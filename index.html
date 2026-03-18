@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #0A0A0A;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Likith Kumar — Engineering student specializing in electric vehicles, control systems, and intelligent mobility systems.">
+    <meta name="author" content="Likith Kumar">
+    <meta name="theme-color" content="#0a0a1a">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://likithkumar.github.io/">
+    <meta property="og:title" content="Likith Kumar | EV & Intelligent Mobility Engineer">
+    <meta property="og:description" content="Engineering student specializing in electric vehicles, control systems, and intelligent mobility systems.">
+    <meta property="og:image" content="https://likithkumar.github.io/assets/images/og-image.webp">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://likithkumar.github.io/">
+    <meta property="twitter:title" content="Likith Kumar | EV & Intelligent Mobility Engineer">
+    <meta property="twitter:description" content="Engineering student specializing in electric vehicles, control systems, and intelligent mobility systems.">
+    <meta property="twitter:image" content="https://likithkumar.github.io/assets/images/og-image.webp">
+
+    <title>Likith Kumar | EV & Intelligent Mobility Engineer</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/images/ui/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/images/ui/apple-touch-icon.png">
+
+    <link rel="canonical" href="https://likithkumar.github.io/">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- =============================================
+         HEADER / NAVIGATION
+    ============================================== -->
+    <header class="header" id="site-header">
+        <nav class="navbar" aria-label="Primary navigation">
+            <div class="navbar__inner l-container l-flex--between">
+
+                <a href="#" class="navbar__logo" aria-label="Likith Kumar — Home">
+                    Likith<span class="navbar__logo-accent">Kumar</span>
+                </a>
+
+                <button
+                    class="navbar__toggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="nav-menu"
+                >
+                    <span class="navbar__toggle-bar"></span>
+                    <span class="navbar__toggle-bar"></span>
+                    <span class="navbar__toggle-bar"></span>
+                </button>
+
+                <ul class="navbar__links" id="nav-menu" role="list">
+                    <li><a href="#about" class="navbar__link">About</a></li>
+                    <li><a href="#projects" class="navbar__link">Projects</a></li>
+                    <li><a href="#skills" class="navbar__link">Skills</a></li>
+                    <li><a href="#achievements" class="navbar__link">Achievements</a></li>
+                    <li><a href="#contact" class="navbar__link navbar__link--cta">Contact</a></li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main id="main-content">
+
+        <!-- =============================================
+             HERO SECTION
+        ============================================== -->
+        <section class="hero" id="hero" aria-labelledby="hero-heading">
+            <div class="hero__inner l-container">
+
+                <p class="hero__greeting">Hi, I'm</p>
+                <h1 class="hero__name" id="hero-heading">Likith Kumar</h1>
+                <p class="hero__tagline">Building Intelligent Mobility Systems ⚡🚗</p>
+                <p class="hero__intro">
+                    Engineering student passionate about electric vehicle systems,
+                    advanced control theory, and the future of sustainable transportation.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="#projects" class="btn btn--primary">View Projects</a>
+                    <a href="#contact" class="btn btn--outline">Contact</a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =============================================
+             ABOUT SECTION
+        ============================================== -->
+        <section class="about section" id="about" aria-labelledby="about-heading" data-animate>
+            <div class="about__inner l-container">
+
+                <h2 class="section__title" id="about-heading">About Me</h2>
+
+                <div class="about__content">
+                    <p class="about__text">
+                        I am an engineering student deeply focused on the intersection of
+                        electric vehicle technology, control systems design, and intelligent
+                        mobility. My work spans hybrid energy storage architectures,
+                        regenerative systems, and embedded control — all driven by a mission
+                        to engineer cleaner, smarter transportation for the future.
+                    </p>
+                    <p class="about__text">
+                        I approach every project with a systems-level mindset — from
+                        mathematical modeling and simulation to real-time diagnostics and
+                        hardware-software co-design.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =============================================
+             PROJECTS SECTION
+        ============================================== -->
+        <section class="projects section" id="projects" aria-labelledby="projects-heading" data-animate data-stagger-group>
+            <div class="projects__inner l-container">
+
+                <h2 class="section__title" id="projects-heading">Projects</h2>
+                <p class="section__subtitle">
+                    A selection of engineering projects in EV systems and control theory.
+                </p>
+
+                <div class="projects__grid l-grid l-grid--auto">
+
+                    <!-- Project 1 -->
+                    <article class="project-card" data-stagger-item>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Hybrid Energy Storage System</h3>
+                            <p class="project-card__description">
+                                A real-time web-based diagnostic simulator for hybrid energy
+                                storage in electric vehicles, featuring intelligent power
+                                splitting across battery and supercapacitor with three EMS
+                                operating modes (Boost, Cruise, Regen).
+                            </p>
+                            <ul class="project-card__tags" aria-label="Technologies used">
+                                <li class="project-card__tag">JavaScript</li>
+                                <li class="project-card__tag">Energy Management</li>
+                                <li class="project-card__tag">EV Systems</li>
+                                <li class="project-card__tag">Real-Time Simulation</li>
+                            </ul>
+                            <div class="project-card__links">
+                                <a href="#" class="project-card__link" aria-label="View Hybrid Energy Storage System on GitHub">GitHub</a>
+                                <a href="#" class="project-card__link" aria-label="View Hybrid Energy Storage System live demo">Live Demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card" data-stagger-item>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Regenerative Suspension System</h3>
+                            <p class="project-card__description">
+                                An electromagnetic regenerative suspension system that harvests
+                                kinetic energy from road vibrations and converts it into
+                                electrical energy to recharge the EV battery, improving overall
+                                energy efficiency.
+                            </p>
+                            <ul class="project-card__tags" aria-label="Technologies used">
+                                <li class="project-card__tag">MATLAB/Simulink</li>
+                                <li class="project-card__tag">Electromagnetic Design</li>
+                                <li class="project-card__tag">Energy Harvesting</li>
+                                <li class="project-card__tag">Mechanical Systems</li>
+                            </ul>
+                            <div class="project-card__links">
+                                <a href="#" class="project-card__link" aria-label="View Regenerative Suspension System on GitHub">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-card" data-stagger-item>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Altitude Hold Control System</h3>
+                            <p class="project-card__description">
+                                A PID-based altitude hold controller for quadrotor UAVs,
+                                implementing sensor fusion and real-time feedback loops to
+                                maintain stable hover altitude under varying disturbance
+                                conditions.
+                            </p>
+                            <ul class="project-card__tags" aria-label="Technologies used">
+                                <li class="project-card__tag">Control Theory</li>
+                                <li class="project-card__tag">PID Controllers</li>
+                                <li class="project-card__tag">Embedded C</li>
+                                <li class="project-card__tag">Sensor Fusion</li>
+                            </ul>
+                            <div class="project-card__links">
+                                <a href="#" class="project-card__link" aria-label="View Altitude Hold Control System on GitHub">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project-card" data-stagger-item>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Z-Bus Matrix Builder Tool</h3>
+                            <p class="project-card__description">
+                                An interactive web tool for constructing and visualizing the
+                                Z-Bus impedance matrix used in power system fault analysis,
+                                supporting step-by-step matrix modification with real-time
+                                output rendering.
+                            </p>
+                            <ul class="project-card__tags" aria-label="Technologies used">
+                                <li class="project-card__tag">JavaScript</li>
+                                <li class="project-card__tag">Power Systems</li>
+                                <li class="project-card__tag">Linear Algebra</li>
+                                <li class="project-card__tag">Web Application</li>
+                            </ul>
+                            <div class="project-card__links">
+                                <a href="#" class="project-card__link" aria-label="View Z-Bus Matrix Builder on GitHub">GitHub</a>
+                                <a href="#" class="project-card__link" aria-label="View Z-Bus Matrix Builder live demo">Live Demo</a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =============================================
+             SKILLS SECTION
+        ============================================== -->
+        <section class="skills section" id="skills" aria-labelledby="skills-heading" data-animate data-stagger-group>
+            <div class="skills__inner l-container">
+
+                <h2 class="section__title" id="skills-heading">Skills</h2>
+
+                <div class="skills__grid l-grid l-grid--auto">
+
+                    <!-- Programming -->
+                    <div class="skill-group" data-stagger-item>
+                        <h3 class="skill-group__title">Programming</h3>
+                        <ul class="skill-group__list" role="list">
+                            <li class="skill-group__item">JavaScript (ES6+)</li>
+                            <li class="skill-group__item">Python</li>
+                            <li class="skill-group__item">C / Embedded C</li>
+                            <li class="skill-group__item">MATLAB</li>
+                            <li class="skill-group__item">HTML & CSS</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="skill-group" data-stagger-item>
+                        <h3 class="skill-group__title">Tools & Platforms</h3>
+                        <ul class="skill-group__list" role="list">
+                            <li class="skill-group__item">MATLAB / Simulink</li>
+                            <li class="skill-group__item">Git & GitHub</li>
+                            <li class="skill-group__item">VS Code</li>
+                            <li class="skill-group__item">Arduino / ESP32</li>
+                            <li class="skill-group__item">Figma</li>
+                        </ul>
+                    </div>
+
+                    <!-- Domains -->
+                    <div class="skill-group" data-stagger-item>
+                        <h3 class="skill-group__title">Domains</h3>
+                        <ul class="skill-group__list" role="list">
+                            <li class="skill-group__item">Electric Vehicle Systems</li>
+                            <li class="skill-group__item">Control Systems Design</li>
+                            <li class="skill-group__item">Energy Storage & Management</li>
+                            <li class="skill-group__item">Intelligent Mobility</li>
+                            <li class="skill-group__item">Power Electronics</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =============================================
+             ACHIEVEMENTS SECTION
+        ============================================== -->
+        <section class="achievements section" id="achievements" aria-labelledby="achievements-heading" data-animate data-stagger-group>
+            <div class="achievements__inner l-container">
+
+                <h2 class="section__title" id="achievements-heading">Achievements</h2>
+
+                <div class="achievements__list">
+
+                    <article class="achievement" data-stagger-item>
+                        <h3 class="achievement__title">IEEE Student Member</h3>
+                        <p class="achievement__description">
+                            Active member of IEEE, contributing to technical events and
+                            knowledge-sharing within the Power & Energy Society chapter.
+                        </p>
+                    </article>
+
+                    <article class="achievement" data-stagger-item>
+                        <h3 class="achievement__title">Hackathon Finalist</h3>
+                        <p class="achievement__description">
+                            Reached the finals of national-level hackathons with innovative
+                            solutions in sustainable mobility and energy systems.
+                        </p>
+                    </article>
+
+                    <article class="achievement" data-stagger-item>
+                        <h3 class="achievement__title">Technical Team Lead</h3>
+                        <p class="achievement__description">
+                            Led cross-functional engineering teams in developing EV prototypes
+                            and control system simulations for inter-college competitions.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =============================================
+             CONTACT SECTION
+        ============================================== -->
+        <section class="contact section" id="contact" aria-labelledby="contact-heading" data-animate>
+            <div class="contact__inner l-container">
+
+                <h2 class="section__title" id="contact-heading">Get In Touch</h2>
+                <p class="section__subtitle">
+                    Interested in collaborating on EV systems, control engineering, or
+                    intelligent mobility projects? Let's connect.
+                </p>
+
+                <div class="contact__links">
+                    <a href="mailto:likith@example.com" class="contact__link" aria-label="Send email to Likith Kumar">
+                        <span class="contact__link-label">Email</span>
+                        <span class="contact__link-value">likith@example.com</span>
+                    </a>
+                    <a href="https://github.com/likithkumar" class="contact__link" target="_blank" rel="noopener noreferrer" aria-label="Visit Likith Kumar's GitHub profile">
+                        <span class="contact__link-label">GitHub</span>
+                        <span class="contact__link-value">github.com/likithkumar</span>
+                    </a>
+                    <a href="https://linkedin.com/in/likithkumar" class="contact__link" target="_blank" rel="noopener noreferrer" aria-label="Visit Likith Kumar's LinkedIn profile">
+                        <span class="contact__link-label">LinkedIn</span>
+                        <span class="contact__link-value">linkedin.com/in/likithkumar</span>
+                    </a>
+                </div>
+
+                <a href="mailto:likith@example.com" class="btn btn--primary contact__cta">
+                    Say Hello
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =============================================
+         FOOTER
+    ============================================== -->
+    <footer class="footer" id="site-footer">
+        <div class="footer__inner l-container">
+            <p class="footer__text">
+                Designed & built by <strong>Likith Kumar</strong>
+            </p>
+            <p class="footer__copyright">
+                &copy; 2026 All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

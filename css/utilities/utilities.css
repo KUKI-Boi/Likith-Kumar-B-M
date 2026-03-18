@@ -1,0 +1,58 @@
+/* ============================================
+   Utilities — utilities.css
+   Helper classes for spacing, visibility, etc.
+   ============================================ */
+
+/* ── Spacing ── */
+.u-mt-sm  { margin-top: var(--space-sm);  }
+.u-mt-md  { margin-top: var(--space-md);  }
+.u-mt-lg  { margin-top: var(--space-lg);  }
+.u-mt-xl  { margin-top: var(--space-xl);  }
+.u-mt-2xl { margin-top: var(--space-2xl); }
+
+.u-mb-sm  { margin-bottom: var(--space-sm);  }
+.u-mb-md  { margin-bottom: var(--space-md);  }
+.u-mb-lg  { margin-bottom: var(--space-lg);  }
+.u-mb-xl  { margin-bottom: var(--space-xl);  }
+
+.u-py-lg  { padding-block: var(--space-lg);  }
+.u-py-xl  { padding-block: var(--space-xl);  }
+.u-py-2xl { padding-block: var(--space-2xl); }
+.u-py-3xl { padding-block: var(--space-3xl); }
+
+/* ── Text ── */
+.u-text-center { text-align: center; }
+.u-text-muted  { color: var(--clr-text-muted); }
+.u-text-accent { color: var(--clr-accent-primary); }
+
+/* ── Visibility (Responsive) ── */
+.u-hide-mobile {
+    display: none;
+}
+
+.u-hide-desktop {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .u-hide-mobile {
+        display: block;
+    }
+
+    .u-hide-desktop {
+        display: none;
+    }
+}
+
+/* ── Screen Reader Only ── */
+.u-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

@@ -1,0 +1,84 @@
+/* ============================================
+   Animations — animations.css
+   Refined for Premium Motion Design.
+   ============================================ */
+
+/* ── Keyframes ── */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ── Utility Classes ── */
+
+.animate {
+    opacity: 0;
+    transition: none; /* Reset for JS trigger */
+}
+
+/* This class is added by Intersection Observer */
+.visible {
+    animation: fadeInUp var(--transition-slow) forwards;
+}
+
+.visible--fade {
+    animation: fadeIn var(--transition-slow) forwards;
+}
+
+.visible--scale {
+    animation: scaleIn var(--transition-slow) forwards;
+}
+
+/* ── Staggered Delays ── */
+/* Applied to children via JS or CSS */
+
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+.stagger-4 { animation-delay: 400ms; }
+.stagger-5 { animation-delay: 500ms; }
+.stagger-6 { animation-delay: 600ms; }
+
+/* ── Hero Specific Sequence ── */
+
+.hero-load-1 { animation: fadeInUp 0.8s var(--transition-slow) both; animation-delay: 200ms; }
+.hero-load-2 { animation: fadeInUp 0.8s var(--transition-slow) both; animation-delay: 400ms; }
+.hero-load-3 { animation: fadeInUp 0.8s var(--transition-slow) both; animation-delay: 600ms; }
+.hero-load-4 { animation: fadeIn 1s var(--transition-slow) both; animation-delay: 900ms; }
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .animate,
+    .visible,
+    .hero-load-1,
+    .hero-load-2,
+    .hero-load-3,
+    .hero-load-4 {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

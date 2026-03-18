@@ -1,0 +1,61 @@
+/* ============================================
+   Skills Section — skills.css
+   ============================================ */
+
+.skills__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+    .skills__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.skill-group {
+    padding: var(--space-lg);
+    background-color: var(--clr-bg-secondary);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-lg);
+    transition: border-color var(--transition-base),
+                box-shadow var(--transition-base);
+}
+
+.skill-group:hover {
+    border-color: var(--clr-accent-dim);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.skill-group__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-bold);
+    color: var(--clr-accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+}
+
+.skill-group__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.skill-group__item {
+    font-size: var(--fs-base);
+    color: var(--clr-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.skill-group__item::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background-color: var(--clr-accent-primary);
+    border-radius: 50%;
+    opacity: 0.5;
+}

@@ -1,0 +1,20 @@
+[
+    {
+        "id": "hess-ev-simulator",
+        "title": "Hybrid Energy Storage System – EV Diagnostic Simulator",
+        "description": "A real-time web-based diagnostic simulator for hybrid energy storage systems in electric vehicles, featuring battery/supercapacitor management and three operating modes.",
+        "image": "./assets/images/projects/hess-simulator.webp",
+        "tags": ["EV", "Control Systems", "JavaScript", "Energy Management"],
+        "date": "2026-03",
+        "link": "#"
+    },
+    {
+        "id": "intelligent-mobility",
+        "title": "Intelligent Mobility Control Unit",
+        "description": "An embedded control unit prototype for autonomous vehicle path planning and sensor fusion, leveraging PID and MPC controllers.",
+        "image": "./assets/images/projects/mobility-control.webp",
+        "tags": ["Embedded Systems", "Control Theory", "C++", "MATLAB"],
+        "date": "2025-12",
+        "link": "#"
+    }
+]

@@ -1,0 +1,37 @@
+/* ============================================
+   Layout — grid.css
+   Responsive CSS Grid systems.
+   ============================================ */
+
+/* Auto-fit grid — adapts columns based on available space */
+.l-grid {
+    display: grid;
+    gap: var(--space-lg);
+}
+
+/* Single column on mobile (default) */
+.l-grid--auto {
+    grid-template-columns: 1fr;
+}
+
+/* ── Tablet ── */
+@media (min-width: 768px) {
+    .l-grid--auto {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .l-grid--2-cols {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── Desktop ── */
+@media (min-width: 1024px) {
+    .l-grid--3-cols {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .l-grid--4-cols {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

@@ -1,0 +1,35 @@
+/* ============================================
+   Layout — flex.css
+   Flexbox layout utilities.
+   ============================================ */
+
+.l-flex {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.l-flex--column {
+    flex-direction: column;
+}
+
+.l-flex--wrap {
+    flex-wrap: wrap;
+}
+
+.l-flex--center {
+    align-items: center;
+    justify-content: center;
+}
+
+.l-flex--between {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.l-flex--start {
+    align-items: flex-start;
+}
+
+.l-flex--end {
+    justify-content: flex-end;
+}
