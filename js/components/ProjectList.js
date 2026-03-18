@@ -1,62 +1,64 @@
 /* ============================================
    ProjectList Component — ProjectList.js
-   Renders project cards from data source.
+   Dynamic rendering from data/projects.json.
    ============================================ */
 
 import { Component } from '../core/Component.js';
-import { fetchJSON } from '../utils/helpers.js';
-import { CONFIG } from '../config.js';
 
 export class ProjectList extends Component {
     constructor(rootElement, props = {}) {
         super(rootElement, props);
-        this.state = {
-            projects: [],
-            isLoading: true,
-        };
+        this.state = { projects: [], loading: true };
+    }
+
+    async onMount() {
+        try {
+            const response = await fetch('./data/projects.json');
+            const data = await response.json();
+            this.setState({ projects: data, loading: false });
+        } catch (error) {
+            console.error('Failed to load projects:', error);
+            this.setState({ loading: false });
+        }
     }
 
     render() {
-        const { projects, isLoading } = this.state;
-
-        if (isLoading) {
-            return `<p class="u-text-center u-text-muted a-pulse">Loading projects...</p>`;
-        }
-
-        if (projects.length === 0) {
-            return `<p class="u-text-center u-text-muted">No projects found.</p>`;
+        if (this.state.loading) {
+            return `<div class="l-container u-text-center">Loading projects...</div>`;
         }
 
         return `
-            <div class="l-grid l-grid--auto">
-                ${projects.map(project => `
-                    <article class="project-card">
-                        ${project.image
-                            ? `<img class="project-card__image" src="${project.image}" alt="${project.title}" loading="lazy">`
-                            : ''
-                        }
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">${project.title}</h3>
-                            <p class="project-card__description">${project.description}</p>
+            <div class="projects__story">
+                ${this.state.projects.map((project, index) => `
+                    <article class="project-story-item" data-animate data-stagger-index="${index}">
+                        <div class="project-story-item__header">
+                            <h3 class="project-story-item__title">${project.title}</h3>
                             <div class="project-card__tags">
-                                ${(project.tags || []).map(tag =>
-                                    `<span class="project-card__tag">${tag}</span>`
-                                ).join('')}
+                                ${project.tags.map(tag => `<span class="project-card__tag">${tag}</span>`).join('')}
                             </div>
+                        </div>
+
+                        <div class="project-story-item__content l-grid l-grid--3-cols">
+                            <div class="story-block">
+                                <h4 class="story-block__label">The Challenge</h4>
+                                <p class="story-block__text">${project.narrative.challenge}</p>
+                            </div>
+                            <div class="story-block u-accent-border">
+                                <h4 class="story-block__label">The Solution</h4>
+                                <p class="story-block__text">${project.narrative.solution}</p>
+                            </div>
+                            <div class="story-block">
+                                <h4 class="story-block__label">The Impact</h4>
+                                <p class="story-block__text">${project.narrative.impact}</p>
+                            </div>
+                        </div>
+
+                        <div class="project-story-item__footer">
+                            <a href="${project.github}" class="btn btn--secondary btn--sm" target="_blank">View Technical Specs</a>
                         </div>
                     </article>
                 `).join('')}
             </div>
         `;
-    }
-
-    async onMount() {
-        try {
-            const projects = await fetchJSON(CONFIG.DATA_PATHS.PROJECTS);
-            this.setState({ projects, isLoading: false });
-        } catch (error) {
-            console.error('[ProjectList] Failed to load projects:', error);
-            this.setState({ projects: [], isLoading: false });
-        }
     }
 }

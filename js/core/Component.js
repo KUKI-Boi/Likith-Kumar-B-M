@@ -70,5 +70,7 @@ export class Component {
      */
     _update() {
         this.root.innerHTML = this.render();
+        // Notify that the component has updated its DOM
+        this.root.dispatchEvent(new CustomEvent('componentUpdate', { bubbles: true }));
     }
 }

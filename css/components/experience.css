@@ -1,0 +1,192 @@
+/* ============================================
+   Experience & Narrative Styles — experience.css
+   ============================================ */
+
+:root {
+    --path-width: 2px;
+    --path-clr: var(--clr-accent);
+    --bridge-space: clamp(4rem, 10vw, 8rem);
+}
+
+/* --- Path of Progress (Vertical Line) --- */
+.path-of-progress {
+    position: fixed;
+    top: 0;
+    left: 20px; /* Aligned with narrow gutter on desktop */
+    width: var(--path-width);
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.05);
+    z-index: 100;
+    pointer-events: none;
+    display: none; /* Desktop only by default */
+}
+
+@media (min-width: 1024px) {
+    .path-of-progress {
+        display: block;
+    }
+}
+
+.path-of-progress__fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%; /* Dynamic */
+    background: linear-gradient(to bottom, transparent, var(--path-clr));
+    box-shadow: 0 0 15px var(--path-clr);
+    transition: height 0.1s ease-out;
+}
+
+/* --- Experience Bridges (Transitions) --- */
+.experience-bridge {
+    height: var(--bridge-space);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.experience-bridge::after {
+    content: '';
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--clr-border), transparent);
+}
+
+/* --- Narrative Headings --- */
+.section--narrative .section__title {
+    font-family: var(--ff-accent);
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-md);
+    opacity: 0.8;
+}
+
+.section--narrative .section__subtitle {
+    max-width: 600px;
+    font-size: var(--fs-lg);
+    line-height: 1.6;
+    color: var(--clr-text-secondary);
+}
+
+/* --- Adaptive Pacing --- */
+.section {
+    padding: var(--space-xxl) 0;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero {
+    min-height: 100vh;
+}
+
+/* --- Project Storytelling Layout --- */
+.projects__story {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxl);
+    margin-top: var(--space-xl);
+}
+
+.project-story-item {
+    background-color: var(--clr-bg-secondary);
+    border: 1px solid var(--clr-border);
+    padding: var(--space-xl);
+    border-radius: 4px; /* Crisp edges for tech feel */
+    transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.project-story-item:hover {
+    border-color: var(--clr-accent);
+}
+
+.project-story-item__header {
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--clr-border);
+    padding-bottom: var(--space-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.project-story-item__title {
+    font-size: var(--fs-xl);
+    font-family: var(--ff-accent);
+    color: var(--clr-text-primary);
+}
+
+.project-story-item__content {
+    gap: var(--space-lg);
+    margin-bottom: var(--space-lg);
+}
+
+.story-block__label {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--clr-accent);
+    margin-bottom: var(--space-xs);
+}
+
+.story-block__text {
+    font-size: var(--fs-sm);
+    color: var(--clr-text-secondary);
+    line-height: 1.6;
+}
+
+.u-accent-border {
+    border-left: 2px solid var(--clr-accent);
+    padding-left: var(--space-md);
+}
+
+@media (max-width: 768px) {
+    .project-story-item__content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Vision Branding --- */
+.vision__content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --- Final Narrative Contact --- */
+.contact-method {
+    background: var(--clr-bg-secondary);
+    border: 1px solid var(--clr-border);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.contact-method:hover {
+    border-color: var(--clr-accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 209, 255, 0.1);
+}
+
+.contact-method__label {
+    font-size: var(--fs-xs);
+    color: var(--clr-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.contact-method__value {
+    font-size: var(--fs-md);
+    color: var(--clr-text-primary);
+}
+
+/* --- Alignment Helpers --- */
+.u-mx-auto { margin-left: auto; margin-right: auto; }
+.u-border-glow { border: 1px solid var(--clr-border); box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); }

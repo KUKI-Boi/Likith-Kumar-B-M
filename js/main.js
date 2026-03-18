@@ -4,14 +4,29 @@
    ============================================ */
 
 import { qs, initScrollAnimations, initSmoothScroll } from './utils/dom.js';
+import { ProjectList } from './components/ProjectList.js';
+import { SkillList } from './components/SkillList.js';
+import { Experience } from './core/Experience.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Core Systems
+    // 1. Initialize Components
+    const projectTarget = qs('#projects-target');
+    const skillTarget = qs('#skills-target');
+
+    if (projectTarget) {
+        new ProjectList(projectTarget).mount();
+    }
+
+    if (skillTarget) {
+        new SkillList(skillTarget).mount();
+    }
+
+    // 2. Core Systems
     initScrollAnimations();
     initSmoothScroll();
     initMobileMenu();
 
-    // 2. Page Load Sequence (Optional small delay for stability)
+    // 3. Page Load Sequence
     setTimeout(initHeroSequence, 100);
 });
 

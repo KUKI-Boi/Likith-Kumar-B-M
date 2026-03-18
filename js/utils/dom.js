@@ -42,11 +42,19 @@ export function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Track elements with [data-animate]
-    qsa('[data-animate]').forEach(el => {
-        el.classList.add('animate');
-        observer.observe(el);
-    });
+    // Initial track
+    const animate = () => {
+        qsa('[data-animate]:not(.animate)').forEach(el => {
+            el.classList.add('animate');
+            observer.observe(el);
+        });
+        // Also handle stagger items inside observed groups might need manual class addition if they are dynamic
+    };
+
+    animate();
+
+    // Re-check when dynamic components update
+    document.addEventListener('componentUpdate', animate);
 }
 
 /**

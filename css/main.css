@@ -25,6 +25,7 @@
 @import url('./components/skills.css');
 @import url('./components/achievements.css');
 @import url('./components/contact.css');
+@import './components/experience.css';
 
 /* 6. Site-specific */
 @import url('./components/footer.css');

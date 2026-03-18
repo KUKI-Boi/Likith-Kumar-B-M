@@ -1,20 +1,35 @@
 [
     {
-        "id": "hess-ev-simulator",
-        "title": "Hybrid Energy Storage System – EV Diagnostic Simulator",
-        "description": "A real-time web-based diagnostic simulator for hybrid energy storage systems in electric vehicles, featuring battery/supercapacitor management and three operating modes.",
-        "image": "./assets/images/projects/hess-simulator.webp",
-        "tags": ["EV", "Control Systems", "JavaScript", "Energy Management"],
-        "date": "2026-03",
-        "link": "#"
+        "title": "Hybrid Energy Storage System",
+        "description": "Intelligent power splitting between battery and supercapacitor for EV efficiency.",
+        "tags": ["JavaScript", "Energy Management", "EV Systems"],
+        "github": "https://github.com/KUKI-Boi/Likith-Kumar-B-M",
+        "narrative": {
+            "challenge": "Handling high-frequency power peaks during EV acceleration that degrade battery life.",
+            "solution": "Developed a real-time EMS using a Rule-Based logic to shunt peak currents to a supercapacitor bank.",
+            "impact": "Theoretical battery lifecycle extension of 15% and improved regenerative braking efficiency."
+        }
     },
     {
-        "id": "intelligent-mobility",
-        "title": "Intelligent Mobility Control Unit",
-        "description": "An embedded control unit prototype for autonomous vehicle path planning and sensor fusion, leveraging PID and MPC controllers.",
-        "image": "./assets/images/projects/mobility-control.webp",
-        "tags": ["Embedded Systems", "Control Theory", "C++", "MATLAB"],
-        "date": "2025-12",
-        "link": "#"
+        "title": "Regenerative Suspension System",
+        "description": "Electromagnetic energy harvesting from road vibrations.",
+        "tags": ["MATLAB/Simulink", "Electromagnetic Design", "Energy Harvesting"],
+        "github": "https://github.com/KUKI-Boi/Likith-Kumar-B-M",
+        "narrative": {
+            "challenge": "Lost kinetic energy in standard suspension dampers during rough road travel.",
+            "solution": "Designed a linear electromagnetic generator (EMG) integrated into the strut assembly.",
+            "impact": "Harvested up to 200W of ancillary power, directly recharging the low-voltage onboard systems."
+        }
+    },
+    {
+        "title": "Altitude Hold Control System",
+        "description": "High-precision PID control for quadrotor UAV stability.",
+        "tags": ["Control Theory", "PID Controllers", "Embedded C"],
+        "github": "https://github.com/KUKI-Boi/Likith-Kumar-B-M",
+        "narrative": {
+            "challenge": "Maintaining millimeter-level hover accuracy in turbulent outdoor environments.",
+            "solution": "Implemented a cascaded PID loop with complementary filter sensor fusion for IMU data.",
+            "impact": "Stable hover within ±5cm error margin during 15km/h wind gusts."
+        }
     }
 ]

@@ -72,250 +72,110 @@
             </div>
         </nav>
     </header>
-
+    <!-- Path of Progress Indicator -->
+    <div class="path-of-progress" aria-hidden="true">
+        <div class="path-of-progress__fill" id="path-fill"></div>
+    </div>
 
     <main id="main-content">
-
         <!-- =============================================
-             HERO SECTION
+             PHASE 1: THE HOOK (HERO)
         ============================================== -->
-        <section class="hero" id="hero" aria-labelledby="hero-heading">
+        <section class="hero section--narrative" id="home" data-animate>
             <div class="hero__inner l-container">
+                <div class="hero__content">
+                    <span class="hero__eyebrow" data-animate-hero>Hi, I'm</span>
+                    <h1 class="hero__title" data-animate-hero>Likith Kumar</h1>
+                    <p class="hero__tagline" data-animate-hero>
+                        Building Intelligent Mobility Systems
+                    </p>
+                    
+                    <div class="hero__description" data-animate-hero>
+                        <span class="u-accent">⚡ 🏎️</span>
+                        Engineering student passionate about electric vehicle systems, 
+                        advanced control theory, and the future of sustainable transportation.
+                    </div>
 
-                <p class="hero__greeting">Hi, I'm</p>
-                <h1 class="hero__name" id="hero-heading">Likith Kumar</h1>
-                <p class="hero__tagline">Building Intelligent Mobility Systems ⚡🚗</p>
-                <p class="hero__intro">
-                    Engineering student passionate about electric vehicle systems,
-                    advanced control theory, and the future of sustainable transportation.
-                </p>
-
-                <div class="hero__actions">
-                    <a href="#projects" class="btn btn--primary">View Projects</a>
-                    <a href="#contact" class="btn btn--outline">Contact</a>
+                    <div class="hero__actions" data-animate-hero>
+                        <a href="#projects" class="btn btn--primary">View Projects</a>
+                        <a href="#contact" class="btn btn--secondary">Contact</a>
+                    </div>
                 </div>
 
+                <div class="hero__scroll-indicator" data-animate-hero>
+                    <div class="mouse"></div>
+                    <span>Scroll to Discover</span>
+                </div>
             </div>
         </section>
 
+        <div class="experience-bridge"></div>
 
         <!-- =============================================
-             ABOUT SECTION
+             PHASE 2: THE LOGIC (PHILOSOPHY / ABOUT)
         ============================================== -->
-        <section class="about section" id="about" aria-labelledby="about-heading" data-animate>
+        <section class="about section--narrative" id="about" aria-labelledby="about-heading" data-animate>
             <div class="about__inner l-container">
-
-                <h2 class="section__title" id="about-heading">About Me</h2>
-
-                <div class="about__content">
-                    <p class="about__text">
-                        I am an engineering student deeply focused on the intersection of
-                        electric vehicle technology, control systems design, and intelligent
-                        mobility. My work spans hybrid energy storage architectures,
-                        regenerative systems, and embedded control — all driven by a mission
-                        to engineer cleaner, smarter transportation for the future.
-                    </p>
-                    <p class="about__text">
-                        I approach every project with a systems-level mindset — from
-                        mathematical modeling and simulation to real-time diagnostics and
-                        hardware-software co-design.
-                    </p>
+                <h2 class="section__title" id="about-heading">The Mindset</h2>
+                <p class="section__subtitle">
+                    I view engineering as the art of controlling complexity. From battery management 
+                    to autonomous flight, my work is driven by a singular goal: 
+                    <strong>creating systems that think, react, and scale.</strong>
+                </p>
+                
+                <div class="about__grid l-grid l-grid--2-cols u-mt-xl">
+                    <div class="about__text" data-animate>
+                        <p>
+                            Currently pursuing my engineering degree with a laser focus on 
+                            <strong>Electric Vehicle technology</strong> and <strong>Modern Control Theory</strong>. 
+                            I don't just build hardware; I design the logic that makes it move.
+                        </p>
+                    </div>
+                    <!-- Placeholder for interactive system diagram -->
+                    <div class="about__visual u-border-glow" data-animate>
+                        <div class="u-text-center u-p-lg">
+                            [ System Diagram Placeholder ]
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </section>
 
+        <div class="experience-bridge"></div>
 
         <!-- =============================================
-             PROJECTS SECTION
+             PHASE 3: THE EVIDENCE (PROJECTS)
         ============================================== -->
-        <section class="projects section" id="projects" aria-labelledby="projects-heading" data-animate data-stagger-group>
+        <section class="projects section--narrative" id="projects" aria-labelledby="projects-heading" data-animate data-stagger-group>
             <div class="projects__inner l-container">
 
-                <h2 class="section__title" id="projects-heading">Projects</h2>
+                <h2 class="section__title" id="projects-heading">The Proof</h2>
                 <p class="section__subtitle">
-                    A selection of engineering projects in EV systems and control theory.
+                    Engineering case studies in propulsion, energy management, and control.
                 </p>
 
-                <div class="projects__grid l-grid l-grid--auto">
+                <!-- Dynamic Project List Target -->
+                <div id="projects-target"></div>
 
-                    <!-- Project 1 -->
-                    <article class="project-card" data-stagger-item>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Hybrid Energy Storage System</h3>
-                            <p class="project-card__description">
-                                A real-time web-based diagnostic simulator for hybrid energy
-                                storage in electric vehicles, featuring intelligent power
-                                splitting across battery and supercapacitor with three EMS
-                                operating modes (Boost, Cruise, Regen).
-                            </p>
-                            <ul class="project-card__tags" aria-label="Technologies used">
-                                <li class="project-card__tag">JavaScript</li>
-                                <li class="project-card__tag">Energy Management</li>
-                                <li class="project-card__tag">EV Systems</li>
-                                <li class="project-card__tag">Real-Time Simulation</li>
-                            </ul>
-                            <div class="project-card__links">
-                                <a href="#" class="project-card__link" aria-label="View Hybrid Energy Storage System on GitHub">GitHub</a>
-                                <a href="#" class="project-card__link" aria-label="View Hybrid Energy Storage System live demo">Live Demo</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 2 -->
-                    <article class="project-card" data-stagger-item>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Regenerative Suspension System</h3>
-                            <p class="project-card__description">
-                                An electromagnetic regenerative suspension system that harvests
-                                kinetic energy from road vibrations and converts it into
-                                electrical energy to recharge the EV battery, improving overall
-                                energy efficiency.
-                            </p>
-                            <ul class="project-card__tags" aria-label="Technologies used">
-                                <li class="project-card__tag">MATLAB/Simulink</li>
-                                <li class="project-card__tag">Electromagnetic Design</li>
-                                <li class="project-card__tag">Energy Harvesting</li>
-                                <li class="project-card__tag">Mechanical Systems</li>
-                            </ul>
-                            <div class="project-card__links">
-                                <a href="#" class="project-card__link" aria-label="View Regenerative Suspension System on GitHub">GitHub</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 3 -->
-                    <article class="project-card" data-stagger-item>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Altitude Hold Control System</h3>
-                            <p class="project-card__description">
-                                A PID-based altitude hold controller for quadrotor UAVs,
-                                implementing sensor fusion and real-time feedback loops to
-                                maintain stable hover altitude under varying disturbance
-                                conditions.
-                            </p>
-                            <ul class="project-card__tags" aria-label="Technologies used">
-                                <li class="project-card__tag">Control Theory</li>
-                                <li class="project-card__tag">PID Controllers</li>
-                                <li class="project-card__tag">Embedded C</li>
-                                <li class="project-card__tag">Sensor Fusion</li>
-                            </ul>
-                            <div class="project-card__links">
-                                <a href="#" class="project-card__link" aria-label="View Altitude Hold Control System on GitHub">GitHub</a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Project 4 -->
-                    <article class="project-card" data-stagger-item>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Z-Bus Matrix Builder Tool</h3>
-                            <p class="project-card__description">
-                                An interactive web tool for constructing and visualizing the
-                                Z-Bus impedance matrix used in power system fault analysis,
-                                supporting step-by-step matrix modification with real-time
-                                output rendering.
-                            </p>
-                            <ul class="project-card__tags" aria-label="Technologies used">
-                                <li class="project-card__tag">JavaScript</li>
-                                <li class="project-card__tag">Power Systems</li>
-                                <li class="project-card__tag">Linear Algebra</li>
-                                <li class="project-card__tag">Web Application</li>
-                            </ul>
-                            <div class="project-card__links">
-                                <a href="#" class="project-card__link" aria-label="View Z-Bus Matrix Builder on GitHub">GitHub</a>
-                                <a href="#" class="project-card__link" aria-label="View Z-Bus Matrix Builder live demo">Live Demo</a>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
             </div>
         </section>
 
+        <div class="experience-bridge"></div>
 
         <!-- =============================================
-             SKILLS SECTION
+             PHASE 4: THE CAPABILITY (SKILLS)
         ============================================== -->
-        <section class="skills section" id="skills" aria-labelledby="skills-heading" data-animate data-stagger-group>
+        <section class="skills section--narrative" id="skills" aria-labelledby="skills-heading" data-animate data-stagger-group>
             <div class="skills__inner l-container">
 
-                <h2 class="section__title" id="skills-heading">Skills</h2>
+                <h2 class="section__title" id="skills-heading">Capability</h2>
 
-                <div class="skills__grid l-grid l-grid--auto">
+                <!-- Dynamic Skill List Target -->
+                <div id="skills-target"></div>
 
-                    <!-- Programming -->
-                    <div class="skill-group" data-stagger-item>
-                        <h3 class="skill-group__title">Programming</h3>
-                        <ul class="skill-group__list" role="list">
-                            <li class="skill-group__item">JavaScript (ES6+)</li>
-                            <li class="skill-group__item">Python</li>
-                            <li class="skill-group__item">C / Embedded C</li>
-                            <li class="skill-group__item">MATLAB</li>
-                            <li class="skill-group__item">HTML & CSS</li>
-                        </ul>
-                    </div>
-
-                    <!-- Tools -->
-                    <div class="skill-group" data-stagger-item>
-                        <h3 class="skill-group__title">Tools & Platforms</h3>
-                        <ul class="skill-group__list" role="list">
-                            <li class="skill-group__item">MATLAB / Simulink</li>
-                            <li class="skill-group__item">Git & GitHub</li>
-                            <li class="skill-group__item">VS Code</li>
-                            <li class="skill-group__item">Arduino / ESP32</li>
-                            <li class="skill-group__item">Figma</li>
-                        </ul>
-                    </div>
-
-                    <!-- Domains -->
-                    <div class="skill-group" data-stagger-item>
-                        <h3 class="skill-group__title">Domains</h3>
-                        <ul class="skill-group__list" role="list">
-                            <li class="skill-group__item">Electric Vehicle Systems</li>
-                            <li class="skill-group__item">Control Systems Design</li>
-                            <li class="skill-group__item">Energy Storage & Management</li>
-                            <li class="skill-group__item">Intelligent Mobility</li>
-                            <li class="skill-group__item">Power Electronics</li>
-                        </ul>
-                    </div>
-
-                </div>
             </div>
         </section>
 
-
-        <!-- =============================================
-             ACHIEVEMENTS SECTION
-        ============================================== -->
-        <section class="achievements section" id="achievements" aria-labelledby="achievements-heading" data-animate data-stagger-group>
-            <div class="achievements__inner l-container">
-
-                <h2 class="section__title" id="achievements-heading">Achievements</h2>
-
-                <div class="achievements__list">
-
-                    <article class="achievement" data-stagger-item>
-                        <h3 class="achievement__title">IEEE Student Member</h3>
-                        <p class="achievement__description">
-                            Active member of IEEE, contributing to technical events and
-                            knowledge-sharing within the Power & Energy Society chapter.
-                        </p>
-                    </article>
-
-                    <article class="achievement" data-stagger-item>
-                        <h3 class="achievement__title">Hackathon Finalist</h3>
-                        <p class="achievement__description">
-                            Reached the finals of national-level hackathons with innovative
-                            solutions in sustainable mobility and energy systems.
-                        </p>
-                    </article>
-
-                    <article class="achievement" data-stagger-item>
-                        <h3 class="achievement__title">Technical Team Lead</h3>
-                        <p class="achievement__description">
-                            Led cross-functional engineering teams in developing EV prototypes
-                            and control system simulations for inter-college competitions.
                         </p>
                     </article>
 
