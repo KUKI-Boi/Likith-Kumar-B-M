@@ -1,57 +1,48 @@
 /* ============================================
    Animations — animations.css
-   Premium motion system. Scroll reveals,
-   hero sequence, stagger, hover effects.
+   Progressive enhancement: hide only if JS works.
    ============================================ */
 
-/* --- Scroll Reveal Base --- */
-[data-animate] {
+/* 1. Base State (Visible by default) */
+[data-animate],
+[data-animate-hero] {
+    opacity: 1;
+    transform: none;
+}
+
+/* 2. JS-Enabled State (Initial Hidden) */
+.js-enabled [data-animate] {
     opacity: 0;
-    transform: translateY(40px);
-    transition:
+    transform: translateY(30px);
+    transition: 
         opacity var(--transition-slow),
         transform var(--transition-slow);
 }
 
-[data-animate].is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- Stagger Delays --- */
-[data-stagger-index="0"] { transition-delay: 0ms; }
-[data-stagger-index="1"] { transition-delay: 120ms; }
-[data-stagger-index="2"] { transition-delay: 240ms; }
-[data-stagger-index="3"] { transition-delay: 360ms; }
-[data-stagger-index="4"] { transition-delay: 480ms; }
-
-/* --- Hero Load Sequence --- */
-[data-animate-hero] {
+.js-enabled [data-animate-hero] {
     opacity: 0;
-    transform: translateY(30px);
-    transition:
+    transform: translateY(20px);
+    transition: 
         opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
         transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-animate-hero].hero-loaded {
-    opacity: 1;
-    transform: translateY(0);
+/* 3. Revealed States */
+.js-enabled [data-animate].is-visible,
+.js-enabled [data-animate-hero].hero-loaded {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
-/* Staggered hero entrance */
-.hero__eyebrow[data-animate-hero]     { transition-delay: 200ms; }
-.hero__title[data-animate-hero]       { transition-delay: 400ms; }
-.hero__tagline[data-animate-hero]     { transition-delay: 600ms; }
-.hero__description[data-animate-hero] { transition-delay: 800ms; }
-.hero__actions[data-animate-hero]     { transition-delay: 1000ms; }
-.hero__scroll-indicator[data-animate-hero] { transition-delay: 1400ms; }
+/* Staggered hero entrance delays */
+.js-enabled .hero__eyebrow[data-animate-hero]     { transition-delay: 100ms; }
+.js-enabled .hero__title[data-animate-hero]       { transition-delay: 250ms; }
+.js-enabled .hero__tagline[data-animate-hero]     { transition-delay: 400ms; }
+.js-enabled .hero__description[data-animate-hero] { transition-delay: 550ms; }
+.js-enabled .hero__actions[data-animate-hero]     { transition-delay: 700ms; }
+.js-enabled .hero__scroll-indicator[data-animate-hero] { transition-delay: 1000ms; }
 
-/* --- Link Hover Underline --- */
-.navbar__link {
-    position: relative;
-}
-
+/* Links */
 .navbar__link::after {
     content: '';
     position: absolute;
@@ -68,7 +59,6 @@
     width: 100%;
 }
 
-/* --- Respect reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;

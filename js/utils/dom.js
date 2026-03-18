@@ -1,6 +1,6 @@
 /* ============================================
    DOM Utilities — dom.js
-   Extended with advanced animation handling.
+   Safe, robust animation and interaction logic.
    ============================================ */
 
 export function qs(selector, parent = document) {
@@ -12,12 +12,11 @@ export function qsa(selector, parent = document) {
 }
 
 /**
- * Advanced Scroll Observer
- * Supports individual element triggers and staggered group reveals.
+ * Scroll Observer with Fallback
  */
 export function initScrollAnimations() {
     const observerOptions = {
-        threshold: 0.15,
+        threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
 
@@ -25,40 +24,32 @@ export function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const el = entry.target;
-
-                // Handle staggered children if group
-                if (el.hasAttribute('data-stagger-group')) {
-                    const children = qsa('[data-stagger-item]', el);
-                    children.forEach((child, index) => {
-                        child.style.animationDelay = `${(index + 1) * 100}ms`;
-                        child.classList.add('is-visible');
-                    });
-                } else {
-                    el.classList.add('is-visible');
-                }
-
+                el.classList.add('is-visible');
                 observer.unobserve(el);
             }
         });
     }, observerOptions);
 
-    // Initial track
     const animate = () => {
         qsa('[data-animate]:not(.animate)').forEach(el => {
             el.classList.add('animate');
             observer.observe(el);
         });
-        // Also handle stagger items inside observed groups might need manual class addition if they are dynamic
     };
 
-    animate();
+    // Safety Trigger: In case observer doesn't fire or JS is slow
+    setTimeout(() => {
+        qsa('[data-animate]:not(.is-visible)').forEach(el => {
+            el.classList.add('is-visible');
+        });
+    }, 3000);
 
-    // Re-check when dynamic components update
+    animate();
     document.addEventListener('componentUpdate', animate);
 }
 
 /**
- * Smooth Scrolling for Anchor Links
+ * Smooth Scroll
  */
 export function initSmoothScroll() {
     document.addEventListener('click', (e) => {
@@ -79,7 +70,6 @@ export function initSmoothScroll() {
                 behavior: 'smooth'
             });
 
-            // Update URL hash without jump
             history.pushState(null, null, targetId);
         }
     });

@@ -9,6 +9,9 @@ import { SkillList } from './components/SkillList.js';
 import { Experience } from './core/Experience.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // 0. Set JS state
+    document.documentElement.classList.add('js-enabled');
+
     // 1. Mount Dynamic Components
     const projectTarget = qs('#projects-target');
     const skillTarget = qs('#skills-target');
