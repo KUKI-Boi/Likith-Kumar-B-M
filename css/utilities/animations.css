@@ -1,84 +1,78 @@
 /* ============================================
    Animations — animations.css
-   Refined for Premium Motion Design.
+   Premium motion system. Scroll reveals,
+   hero sequence, stagger, hover effects.
    ============================================ */
 
-/* ── Keyframes ── */
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* ── Utility Classes ── */
-
-.animate {
+/* --- Scroll Reveal Base --- */
+[data-animate] {
     opacity: 0;
-    transition: none; /* Reset for JS trigger */
+    transform: translateY(40px);
+    transition:
+        opacity var(--transition-slow),
+        transform var(--transition-slow);
 }
 
-/* This class is added by Intersection Observer */
-.visible {
-    animation: fadeInUp var(--transition-slow) forwards;
+[data-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.visible--fade {
-    animation: fadeIn var(--transition-slow) forwards;
+/* --- Stagger Delays --- */
+[data-stagger-index="0"] { transition-delay: 0ms; }
+[data-stagger-index="1"] { transition-delay: 120ms; }
+[data-stagger-index="2"] { transition-delay: 240ms; }
+[data-stagger-index="3"] { transition-delay: 360ms; }
+[data-stagger-index="4"] { transition-delay: 480ms; }
+
+/* --- Hero Load Sequence --- */
+[data-animate-hero] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+        transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.visible--scale {
-    animation: scaleIn var(--transition-slow) forwards;
+[data-animate-hero].hero-loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* ── Staggered Delays ── */
-/* Applied to children via JS or CSS */
+/* Staggered hero entrance */
+.hero__eyebrow[data-animate-hero]     { transition-delay: 200ms; }
+.hero__title[data-animate-hero]       { transition-delay: 400ms; }
+.hero__tagline[data-animate-hero]     { transition-delay: 600ms; }
+.hero__description[data-animate-hero] { transition-delay: 800ms; }
+.hero__actions[data-animate-hero]     { transition-delay: 1000ms; }
+.hero__scroll-indicator[data-animate-hero] { transition-delay: 1400ms; }
 
-.stagger-1 { animation-delay: 100ms; }
-.stagger-2 { animation-delay: 200ms; }
-.stagger-3 { animation-delay: 300ms; }
-.stagger-4 { animation-delay: 400ms; }
-.stagger-5 { animation-delay: 500ms; }
-.stagger-6 { animation-delay: 600ms; }
+/* --- Link Hover Underline --- */
+.navbar__link {
+    position: relative;
+}
 
-/* ── Hero Specific Sequence ── */
+.navbar__link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--clr-accent);
+    transition: width var(--transition-base);
+}
 
-.hero-load-1 { animation: fadeInUp 0.8s var(--transition-slow) both; animation-delay: 200ms; }
-.hero-load-2 { animation: fadeInUp 0.8s var(--transition-slow) both; animation-delay: 400ms; }
-.hero-load-3 { animation: fadeInUp 0.8s var(--transition-slow) both; animation-delay: 600ms; }
-.hero-load-4 { animation: fadeIn 1s var(--transition-slow) both; animation-delay: 900ms; }
+.navbar__link:hover::after,
+.navbar__link--active::after {
+    width: 100%;
+}
 
-/* ── Reduced Motion ── */
+/* --- Respect reduced motion --- */
 @media (prefers-reduced-motion: reduce) {
-    .animate,
-    .visible,
-    .hero-load-1,
-    .hero-load-2,
-    .hero-load-3,
-    .hero-load-4 {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

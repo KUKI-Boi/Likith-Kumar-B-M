@@ -1,6 +1,6 @@
 /* ============================================
    App Bootstrap — main.js
-   Phase 4: Interactions & Animations.
+   Premium portfolio with dynamic components.
    ============================================ */
 
 import { qs, initScrollAnimations, initSmoothScroll } from './utils/dom.js';
@@ -9,7 +9,7 @@ import { SkillList } from './components/SkillList.js';
 import { Experience } from './core/Experience.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Initialize Components
+    // 1. Mount Dynamic Components
     const projectTarget = qs('#projects-target');
     const skillTarget = qs('#skills-target');
 
@@ -26,12 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initMobileMenu();
 
-    // 3. Page Load Sequence
-    setTimeout(initHeroSequence, 100);
+    // 3. Hero Entrance Sequence (slight delay for paint)
+    requestAnimationFrame(() => {
+        setTimeout(initHeroSequence, 200);
+    });
 });
 
 /**
- * Mobile Menu Toggle Logic
+ * Mobile Menu Toggle
  */
 function initMobileMenu() {
     const toggle = qs('.navbar__toggle');
@@ -40,25 +42,18 @@ function initMobileMenu() {
 
     toggle.addEventListener('click', () => {
         const isOpen = menu.classList.contains('navbar__links--open');
-
-        if (isOpen) {
-            closeMenu();
-        } else {
-            openMenu();
-        }
+        isOpen ? closeMenu() : openMenu();
     });
 
-    // Close on link click
+    // Close menu on link click
     menu.addEventListener('click', (e) => {
-        if (e.target.closest('.navbar__link')) {
-            closeMenu();
-        }
+        if (e.target.closest('.navbar__link')) closeMenu();
     });
 
     function openMenu() {
         menu.classList.add('navbar__links--open');
         toggle.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden'; // Prevent scroll
+        document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
@@ -69,22 +64,10 @@ function initMobileMenu() {
 }
 
 /**
- * Hero Entrance Sequence
- * Directly triggers animations defined in animations.css
+ * Hero Entrance — triggers CSS transitions via class addition.
+ * Uses data-animate-hero elements with staggered delays in animations.css.
  */
 function initHeroSequence() {
-    const sequence = [
-        '.hero__greeting',
-        '.hero__name',
-        '.hero__tagline',
-        '.hero__intro',
-        '.hero__actions'
-    ];
-
-    sequence.forEach((selector, index) => {
-        const el = qs(selector);
-        if (el) {
-            el.classList.add(`hero-load-${Math.min(index + 1, 4)}`);
-        }
-    });
+    const elements = document.querySelectorAll('[data-animate-hero]');
+    elements.forEach(el => el.classList.add('hero-loaded'));
 }

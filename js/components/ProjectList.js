@@ -1,6 +1,6 @@
 /* ============================================
    ProjectList Component — ProjectList.js
-   Dynamic rendering from data/projects.json.
+   Dynamic rendering with narrative case studies.
    ============================================ */
 
 import { Component } from '../core/Component.js';
@@ -16,21 +16,46 @@ export class ProjectList extends Component {
             const response = await fetch('./data/projects.json');
             const data = await response.json();
             this.setState({ projects: data, loading: false });
+            this._initCardGlow();
         } catch (error) {
             console.error('Failed to load projects:', error);
             this.setState({ loading: false });
         }
     }
 
+    /**
+     * Cursor-reactive glow effect on project cards.
+     * @private
+     */
+    _initCardGlow() {
+        const cards = this.root.querySelectorAll('.project-story-item');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', `${x}%`);
+                card.style.setProperty('--mouse-y', `${y}%`);
+            });
+        });
+    }
+
     render() {
         if (this.state.loading) {
-            return `<div class="l-container u-text-center">Loading projects...</div>`;
+            return `<div class="u-text-center" style="padding: var(--space-3xl) 0; color: var(--clr-text-muted);">Loading projects...</div>`;
         }
 
         return `
             <div class="projects__story">
                 ${this.state.projects.map((project, index) => `
                     <article class="project-story-item" data-animate data-stagger-index="${index}">
+                        <div class="project-story-item__image">
+                            ${project.image
+                                ? `<img src="${project.image}" alt="${project.title}" loading="lazy" />`
+                                : `<span>[ ${project.title} — Visual Preview ]</span>`
+                            }
+                        </div>
+
                         <div class="project-story-item__header">
                             <h3 class="project-story-item__title">${project.title}</h3>
                             <div class="project-card__tags">
@@ -54,7 +79,7 @@ export class ProjectList extends Component {
                         </div>
 
                         <div class="project-story-item__footer">
-                            <a href="${project.github}" class="btn btn--secondary btn--sm" target="_blank">View Technical Specs</a>
+                            <a href="${project.github}" class="btn btn--secondary btn--sm" target="_blank" rel="noopener">View on GitHub →</a>
                         </div>
                     </article>
                 `).join('')}
