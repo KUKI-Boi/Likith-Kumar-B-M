@@ -1,38 +1,62 @@
 /* ============================================
-   Header & Navbar — navbar.css
+   Navbar — navbar.css
+   Glassmorphism with indigo tones.
    ============================================ */
 
-.header {
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-}
-
-.navbar {
-    padding-block: var(--space-md);
-    background-color: rgba(10, 10, 10, 0.7);
+    padding: var(--space-sm) 0;
+    background-color: rgba(11, 13, 23, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--clr-border);
-    transition: padding var(--transition-base);
+    transition: background-color var(--transition-base);
+}
+
+.navbar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar__logo {
-    font-family: var(--font-display);
+    font-family: var(--ff-display);
     font-size: var(--fs-md);
     font-weight: var(--fw-bold);
     color: var(--clr-text-primary);
     letter-spacing: 0.05em;
-    text-transform: uppercase;
+    text-decoration: none;
 }
 
-.navbar__logo-accent {
+.navbar__logo span {
     font-weight: var(--fw-light);
-    opacity: 0.6;
+    color: var(--clr-text-muted);
 }
 
+/* Mobile menu toggle */
+.navbar__toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-2xs);
+}
+
+.navbar__toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--clr-text-primary);
+    transition: transform var(--transition-base), opacity var(--transition-fast);
+}
+
+/* Mobile: links hidden by default */
 .navbar__links {
     display: none;
     position: absolute;
@@ -40,14 +64,14 @@
     left: 0;
     width: 100%;
     padding: var(--space-lg) var(--space-md);
-    background-color: var(--clr-bg-secondary);
+    background-color: rgba(15, 18, 33, 0.95);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--clr-border);
     flex-direction: column;
     gap: var(--space-md);
     opacity: 0;
     transform: translateY(-10px);
-    transition: opacity var(--transition-base),
-                transform var(--transition-base);
+    transition: opacity var(--transition-base), transform var(--transition-base);
 }
 
 .navbar__links--open {
@@ -60,47 +84,44 @@
     font-size: var(--fs-sm);
     font-weight: var(--fw-medium);
     color: var(--clr-text-secondary);
+    text-decoration: none;
     transition: color var(--transition-fast);
+    position: relative;
 }
 
-.navbar__link:hover {
+.navbar__link:hover,
+.navbar__link--active {
     color: var(--clr-text-primary);
 }
 
-.navbar__link--cta {
-    padding: 0.5em 1.25em;
-    color: var(--clr-bg-primary);
-    background-color: var(--clr-text-primary);
-    border-radius: var(--radius-sm);
+/* Active indicator */
+.navbar__link--active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--clr-accent);
 }
 
-.navbar__link--cta:hover {
-    background-color: var(--clr-accent-primary);
-    color: var(--clr-bg-primary);
-}
-
-.navbar__toggle {
-    display: none; /* Mobile toggle handled in Phase 4 JS */
-}
-
-@media (max-width: 767px) {
-    .navbar__inner {
-        padding-inline: var(--space-md);
+/* Desktop overrides */
+@media (min-width: 768px) {
+    .navbar__toggle {
+        display: none;
     }
 
     .navbar__links {
-        display: none; /* Hide for mobile till JS implemented */
-    }
-
-    .navbar__toggle {
         display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .navbar__toggle-bar {
-        width: 24px;
-        height: 1px;
-        background-color: var(--clr-text-primary);
+        position: static;
+        width: auto;
+        padding: 0;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        flex-direction: row;
+        gap: var(--space-lg);
+        opacity: 1;
+        transform: none;
     }
 }

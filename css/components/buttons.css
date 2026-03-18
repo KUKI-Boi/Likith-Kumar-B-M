@@ -1,51 +1,55 @@
 /* ============================================
-   Button Components — buttons.css
+   Buttons — buttons.css
+   Premium button system with glow effects.
    ============================================ */
 
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.8em 2em;
-    font-family: var(--font-primary);
-    font-size: var(--fs-base);
+    gap: var(--space-2xs);
+    padding: var(--space-xs) var(--space-lg);
+    font-family: var(--ff-primary);
+    font-size: var(--fs-sm);
     font-weight: var(--fw-medium);
+    letter-spacing: 0.02em;
+    text-decoration: none;
     border-radius: var(--radius-md);
     cursor: pointer;
-    transition: transform var(--transition-fast),
-                background-color var(--transition-base),
-                color var(--transition-base),
-                border-color var(--transition-base),
-                box-shadow var(--transition-base);
-    text-align: center;
+    transition: all var(--transition-base);
+    border: 1px solid transparent;
 }
 
-.btn:active {
-    transform: scale(0.98);
-}
-
+/* Primary: Filled accent */
 .btn--primary {
-    background-color: var(--clr-text-primary);
-    color: var(--clr-bg-primary);
-    border: 1px solid var(--clr-text-primary);
+    background-color: var(--clr-accent);
+    color: #FFFFFF;
+    border-color: var(--clr-accent);
 }
 
 .btn--primary:hover {
+    background-color: #2563EB;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    color: #FFFFFF;
+}
+
+/* Secondary: Ghost/Outline */
+.btn--secondary {
     background-color: transparent;
     color: var(--clr-text-primary);
+    border-color: var(--clr-border-active);
 }
 
-.btn--outline {
-    background-color: transparent;
-    color: var(--clr-text-primary);
-    border: 1px solid var(--clr-border-light);
+.btn--secondary:hover {
+    border-color: var(--clr-accent);
+    color: var(--clr-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15);
 }
 
-.btn--outline:hover {
-    border-color: var(--clr-text-primary);
-}
-
+/* Small variant */
 .btn--sm {
-    padding: 0.5em 1.25em;
-    font-size: var(--fs-sm);
+    padding: var(--space-2xs) var(--space-sm);
+    font-size: var(--fs-xs);
 }

@@ -2,39 +2,29 @@
    Skills Section — skills.css
    ============================================ */
 
-.skills__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-}
-
-@media (min-width: 768px) {
-    .skills__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
 .skill-group {
-    padding: var(--space-lg);
-    background-color: var(--clr-bg-secondary);
+    background-color: var(--clr-bg-surface);
     border: 1px solid var(--clr-border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-card);
     transition: border-color var(--transition-base),
-                box-shadow var(--transition-base);
+                transform var(--transition-base);
 }
 
 .skill-group:hover {
-    border-color: var(--clr-accent-dim);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    border-color: var(--clr-border-active);
+    transform: translateY(-2px);
 }
 
 .skill-group__title {
-    font-family: var(--font-display);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-bold);
-    color: var(--clr-accent-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-family: var(--ff-display);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    color: var(--clr-text-primary);
     margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--clr-border);
 }
 
 .skill-group__list {
@@ -44,18 +34,20 @@
 }
 
 .skill-group__item {
-    font-size: var(--fs-base);
+    font-size: var(--fs-sm);
     color: var(--clr-text-secondary);
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
+    padding-left: var(--space-sm);
+    position: relative;
 }
 
 .skill-group__item::before {
     content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
     width: 4px;
     height: 4px;
-    background-color: var(--clr-accent-primary);
-    border-radius: 50%;
-    opacity: 0.5;
+    background-color: var(--clr-accent);
+    border-radius: var(--radius-full);
 }
