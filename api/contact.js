@@ -5,19 +5,26 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Ensure we have a body (Vanta/Vercel handles JSON parsing, but just in case)
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    const { name, email, message } = body;
+    // Vercel handles JSON parsing automatically when headers are set
+    const { name, email, message } = req.body || {};
     
-    // Securely access the API key from Vercel Environment Variables
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
-
-    if (!accessKey) {
-      console.error('Environment Variable WEB3FORMS_ACCESS_KEY is missing!');
-      return res.status(500).json({ success: false, message: 'Server configuration error' });
+    if (!name || !email || !message) {
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Missing required fields: name, email, and message are all required.' 
+      });
     }
 
-    // Forward the request to Web3Forms secretly from the backend
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      console.error('CRITICAL: WEB3FORMS_ACCESS_KEY is not defined in Vercel settings.');
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Backend Configuration Error: API Key missing in environment variables.' 
+      });
+    }
+
+    // Attempting the post to Web3Forms
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {
@@ -26,23 +33,22 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         access_key: accessKey,
-        name: name,
-        email: email,
-        message: message,
-        subject: "New Contact Form Submission - Likith Kumar Portfolio",
-        from_name: "LK Portfolio Backend"
+        name,
+        email,
+        message,
+        subject: "New Contact Form Submission",
+        from_name: "Portfolio Backend"
       })
     });
 
-    const result = await response.json();
+    const data = await response.json();
+    return res.status(response.status).json(data);
 
-    if (response.status === 200) {
-      return res.status(200).json(result);
-    } else {
-      return res.status(response.status).json(result);
-    }
   } catch (error) {
-    console.error('Secure Backend Error:', error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    console.error('Backend Exception:', error);
+    return res.status(500).json({ 
+      success: false, 
+      message: `Internal Server Error: ${error.message}`
+    });
   }
 }
