@@ -127,11 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
       submitButton.textContent = 'Sending...';
       
       const formData = new FormData(form);
-      formData.append("access_key", "4a6cb5b4-60c6-4136-a032-236ba48207a8");
+      const payload = Object.fromEntries(formData);
 
-      fetch('https://api.web3forms.com/submit', {
+      fetch('/api/contact', {
         method: 'POST',
-        body: formData
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
       })
       .then(async (response) => {
         let json = await response.json();
