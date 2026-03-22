@@ -148,7 +148,18 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 85%;
   transition: transform 0.5s ease;
+}
+
+/* Custom button animations */
+.demo-btn .car-icon {
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.demo-btn:active .car-icon {
+  transform: translateX(40px);
+  opacity: 0;
+  transition: all 0.2s ease-in;
 }
 
 .visual-box:hover .profile-img {

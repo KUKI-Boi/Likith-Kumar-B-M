@@ -12,6 +12,7 @@ export default class Projects extends Component {
         role: 'Systems Engineer',
         tech: ['MATLAB', 'Simulink', 'System Modeling', 'Control Logic Design'],
         github: 'https://github.com/KUKI-Boi/hybrid-energy-storage-system.git',
+        demo: 'https://kuki-boi.github.io/hybrid-energy-storage-system/',
         image: 'assets/images/hess-project.png',
         caseStudy: {
           problem: 'Battery-only systems face significant thermal stress and accelerated degradation during frequent peak load transients (acceleration) and high-current regenerative braking.',
@@ -70,7 +71,18 @@ export default class Projects extends Component {
                   <p class="text-secondary fs-sm mb-8 reveal delay-300">Role: ${project.role}</p>
                   <div class="flex gap-4 reveal delay-400">
                     <button class="btn btn-primary" onclick="window.app.viewProject('${project.id}')">View Case Study</button>
-                    ${project.github ? `<a href="${project.github}" class="btn btn-outline" target="_blank">GitHub</a>` : ''}
+                    ${project.github ? `
+                      <a href="${project.github}" class="btn btn-outline" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        GitHub
+                      </a>
+                    ` : ''}
+                    ${project.demo ? `
+                      <a href="${project.demo}" class="btn btn-outline demo-btn" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; overflow:hidden;">
+                        <svg width="18" height="18" class="car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H8a2 2 0 0 0-1.6.8L3.7 11l-1.86.86a1 1 0 0 0-.84.99V16h3m10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path></svg>
+                        Live Demo
+                      </a>
+                    ` : ''}
                   </div>
                 </div>
                 <div class="project-visual reveal delay-200">
