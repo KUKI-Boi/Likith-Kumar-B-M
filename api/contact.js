@@ -36,13 +36,24 @@ export default async function handler(req, res) {
         name,
         email,
         message,
-        subject: "New Contact Form Submission",
+        subject: "New Portfolio Submission",
         from_name: "Portfolio Backend"
       })
     });
 
-    const data = await response.json();
-    return res.status(response.status).json(data);
+    const contentType = response.headers.get('content-type');
+    
+    if (contentType && contentType.includes('application/json')) {
+      const data = await response.json();
+      return res.status(response.status).json(data);
+    } else {
+      const text = await response.text();
+      console.error('Web3Forms non-JSON response:', text);
+      return res.status(response.status).json({ 
+        success: false, 
+        message: `Web3Forms Error (${response.status}): The mail server returned an unexpected response format.` 
+      });
+    }
 
   } catch (error) {
     console.error('Backend Exception:', error);
