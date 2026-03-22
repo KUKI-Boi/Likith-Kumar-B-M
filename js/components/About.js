@@ -2,7 +2,6 @@ import Component from '../core/Component.js';
 
 export default class About extends Component {
   render() {
-    console.log('About component v2 loaded');
     return `
       <div class="container">
         <div class="grid grid-cols-12 gap-16 items-center">
