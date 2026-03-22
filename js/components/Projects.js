@@ -47,6 +47,7 @@ export default class Projects extends Component {
         role: 'Control Systems Engineer',
         tech: ['Control Systems', 'MATLAB', 'System Modeling'],
         github: 'https://github.com/KUKI-Boi/altitude-hold-controller.git',
+        image: 'assets/images/optimal-project.png',
         caseStudy: {
           problem: 'Maintaining stability and performance in non-linear systems prone to external disturbances and parameter variations requires robust control beyond standard PID tuning.',
           approach: 'Applied State-Space modeling and frequency-domain analysis to design controllers. Verified reliability using Nyquist and Bode stability techniques.',
