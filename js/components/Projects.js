@@ -11,6 +11,7 @@ export default class Projects extends Component {
         description: 'Engineered a high-performance energy storage architecture integrating Lithium-ion batteries with Supercapacitors to optimize power delivery and extend battery cycle life.',
         role: 'Systems Engineer',
         tech: ['MATLAB', 'Simulink', 'System Modeling', 'Control Logic Design'],
+        github: 'https://github.com/KUKI-Boi/hybrid-energy-storage-system.git',
         caseStudy: {
           problem: 'Battery-only systems face significant thermal stress and accelerated degradation during frequent peak load transients (acceleration) and high-current regenerative braking.',
           approach: 'Developed an Intelligent Energy Management Strategy (IEMS) using a rule-based control algorithm to decouple power and energy requirements, diverting transients to supercapacitors while maintaining steady-state loads on the battery.',
@@ -18,7 +19,6 @@ export default class Projects extends Component {
           challenges: 'Managing Supercapacitor SOC (State of Charge) to ensure headroom for regeneration while maintaining boost capability under dynamic load conditions.',
           outcome: 'Achieved a 20% reduction in battery peak current and improved transient voltage stability, demonstrating a scalable approach to increasing EV range and durability.',
           learnings: 'Gained deep insights into power-split optimization and managing conflicting constraints between performance, cost, and reliability.',
-          github: 'https://github.com/KUKI-Boi/hybrid-energy-storage-system.git'
         }
       },
       {
