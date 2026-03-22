@@ -25,9 +25,9 @@ export default class About extends Component {
               </div>
             </div>
           </div>
-          <div class="about-visual col-span-5 reveal delay-300">
+          <div class="about-visual reveal delay-200 col-span-5">
             <div class="visual-box">
-              <!-- Placeholder for an abstract engineering visual or photo -->
+              <img src="assets/images/profile.jpg" alt="Likith Kumar" class="profile-img">
               <div class="visual-overlay"></div>
               <div class="visual-content">
                 <p class="text-accent">CLARITY. DEPTH. ENGINEERING.</p>

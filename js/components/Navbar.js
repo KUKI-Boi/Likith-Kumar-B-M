@@ -11,6 +11,7 @@ export default class Navbar extends Component {
           <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="resume.md" class="nav-link" target="_blank">Resume</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </div>

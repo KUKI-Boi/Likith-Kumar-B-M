@@ -10,14 +10,18 @@ export default class CaseStudy extends Component {
     return `
       <div class="case-study-page">
         <div class="container py-12">
-          <button class="btn-text mb-12 back-btn" onclick="window.app.closeCaseStudy()">← Back to Portfolio</button>
+          <div class="case-study-header flex justify-between items-center mb-12">
+            <div>
+              <span class="text-accent uppercase tracking-widest fs-xs mb-2 block">${project.context}</span>
+              <h2 class="fs-4xl">${project.title}</h2>
+            </div>
+            <div class="flex gap-4">
+              ${project.github ? `<a href="${project.github}" class="btn btn-outline" target="_blank">GitHub Repo</a>` : ''}
+              <button class="btn-text back-btn" onclick="window.app.closeCaseStudy()">Close ×</button>
+            </div>
+          </div>
           
           <div class="case-study-content reveal delay-100 active">
-            <header class="mb-12">
-              <span class="text-accent uppercase tracking-widest mb-2 block">${project.context}</span>
-              <h2 class="fs-5xl mb-6">${project.title}</h2>
-            </header>
-            
             <div class="grid grid-cols-12 gap-16 mb-12">
               <div class="col-span-8">
                 <h3 class="fs-xl mb-4 text-accent">The Challenge</h3>

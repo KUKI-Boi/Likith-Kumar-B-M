@@ -17,7 +17,8 @@ export default class Projects extends Component {
           design: 'Implemented a parallel HESS topology with a bi-directional DC-DC converter interface for the supercapacitor, managed by a hierarchical control layer.',
           challenges: 'Managing Supercapacitor SOC (State of Charge) to ensure headroom for regeneration while maintaining boost capability under dynamic load conditions.',
           outcome: 'Achieved a 20% reduction in battery peak current and improved transient voltage stability, demonstrating a scalable approach to increasing EV range and durability.',
-          learnings: 'Gained deep insights into power-split optimization and managing conflicting constraints between performance, cost, and reliability.'
+          learnings: 'Gained deep insights into power-split optimization and managing conflicting constraints between performance, cost, and reliability.',
+          github: 'https://github.com/KUKI-Boi/hybrid-energy-storage-system.git'
         }
       },
       {
@@ -27,6 +28,7 @@ export default class Projects extends Component {
         description: 'Designed an electromechanical energy recovery system capturing kinetic energy from vehicle oscillations, converting vibration energy into electrical power.',
         role: 'Mechanical/Systems Engineer',
         tech: ['Simulation', 'Mechanical Design Concepts', 'Energy Conversion Systems'],
+        github: 'https://github.com/KUKI-Boi/Regenerative-Suspension.git',
         caseStudy: {
           problem: 'Vehicle suspension systems traditionally dissipate significant kinetic energy as heat. The challenge is recovering this energy without compromising ride comfort or handling stability.',
           approach: 'Integrated a linear-to-rotary generator within the suspension geometry. Developed a recovery circuit to balance damping requirements with energy harvesting efficiency.',
@@ -40,6 +42,7 @@ export default class Projects extends Component {
         description: 'Developed and validated precision control-oriented solutions for high-order dynamic systems, focusing on minimizing settling time and overshoot.',
         role: 'Control Systems Engineer',
         tech: ['Control Systems', 'MATLAB', 'System Modeling'],
+        github: 'https://github.com/KUKI-Boi/altitude-hold-controller.git',
         caseStudy: {
           problem: 'Maintaining stability and performance in non-linear systems prone to external disturbances and parameter variations requires robust control beyond standard PID tuning.',
           approach: 'Applied State-Space modeling and frequency-domain analysis to design controllers. Verified reliability using Nyquist and Bode stability techniques.',
@@ -64,7 +67,10 @@ export default class Projects extends Component {
                   <h4 class="fs-2xl mb-4 reveal delay-100">${project.title}</h4>
                   <p class="mb-6 reveal delay-200">${project.description}</p>
                   <p class="text-secondary fs-sm mb-8 reveal delay-300">Role: ${project.role}</p>
-                  <button class="btn-text reveal delay-400" onclick="window.app.viewProject('${project.id}')">View Case Study →</button>
+                  <div class="flex gap-4 reveal delay-400">
+                    <button class="btn btn-primary" onclick="window.app.viewProject('${project.id}')">View Case Study</button>
+                    ${project.github ? `<a href="${project.github}" class="btn btn-outline" target="_blank">GitHub</a>` : ''}
+                  </div>
                 </div>
                 <div class="project-visual reveal delay-200">
                   <div class="visual-placeholder"></div>

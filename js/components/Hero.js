@@ -9,7 +9,7 @@ export default class Hero extends Component {
         <p class="hero-subtitle mb-12 reveal delay-200">Focused on designing efficient, scalable, and real-world engineering solutions across EV systems, control systems, and intelligent technologies.</p>
         <div class="hero-cta reveal delay-300">
           <a href="#projects" class="btn btn-primary">Discover Projects</a>
-          <a href="#contact" class="btn btn-outline">Let's Talk</a>
+          <a href="resume.md" class="btn btn-outline" target="_blank">View Resume</a>
         </div>
       </div>
       <div class="scroll-indicator reveal delay-400">

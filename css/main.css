@@ -133,6 +133,18 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  border-radius: 4px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.visual-box:hover .profile-img {
+  transform: scale(1.05);
 }
 
 .visual-overlay {
