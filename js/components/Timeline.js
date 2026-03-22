@@ -15,7 +15,7 @@ export default class Timeline extends Component {
         impact: 'Participated actively in social and technical initiatives aimed at advancing energy technology.'
       },
       {
-        year: '2024',
+        year: '2025',
         title: 'Hackathon Winner',
         impact: 'Developed innovative, high-impact engineering solutions under intense time constraints.'
       }
