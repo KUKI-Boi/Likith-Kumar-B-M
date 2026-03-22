@@ -29,10 +29,11 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'User-Agent': 'Vercel-Serverless-Backend' // Some servers block requests without a User-Agent
       },
       body: JSON.stringify({
-        access_key: accessKey,
+        access_key: accessKey.trim(), // Ensure no whitespace
         name,
         email,
         message,
@@ -45,13 +46,22 @@ export default async function handler(req, res) {
     
     if (contentType && contentType.includes('application/json')) {
       const data = await response.json();
+      
+      // If Web3Forms returns a 403, it often means the email isn't verified
+      if (response.status === 403) {
+        return res.status(403).json({
+          success: false,
+          message: "Error 403: Please verify your email at Web3Forms.com or check your Access Key."
+        });
+      }
+      
       return res.status(response.status).json(data);
     } else {
       const text = await response.text();
       console.error('Web3Forms non-JSON response:', text);
       return res.status(response.status).json({ 
         success: false, 
-        message: `Web3Forms Error (${response.status}): The mail server returned an unexpected response format.` 
+        message: `Error (${response.status}): Web3Forms rejected the request. Please check your account.` 
       });
     }
 
