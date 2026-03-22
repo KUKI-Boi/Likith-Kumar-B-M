@@ -151,14 +151,14 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.style = ''; // Reset inline styles
           }, 5000);
         } else {
-          console.error(response);
-          submitButton.textContent = 'Error: Try Again';
+          console.error('Server error:', json);
+          submitButton.textContent = json.message || 'Error: Try Again';
           setTimeout(() => submitButton.textContent = 'Send Message →', 3000);
         }
       })
       .catch(error => {
-        console.error(error);
-        submitButton.textContent = 'Error: Try Again';
+        console.error('Network/Fetch error:', error);
+        submitButton.textContent = 'Connection Error';
         setTimeout(() => submitButton.textContent = 'Send Message →', 3000);
       });
     });

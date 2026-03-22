@@ -5,14 +5,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, message } = req.body;
+    // Ensure we have a body (Vanta/Vercel handles JSON parsing, but just in case)
+    const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const { name, email, message } = body;
     
     // Securely access the API key from Vercel Environment Variables
-    // The browser and public NEVER see this key!
     const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
 
     if (!accessKey) {
-      return res.status(500).json({ message: 'Server configuration error: Missing API Key in .env' });
+      console.error('Environment Variable WEB3FORMS_ACCESS_KEY is missing!');
+      return res.status(500).json({ success: false, message: 'Server configuration error' });
     }
 
     // Forward the request to Web3Forms secretly from the backend
