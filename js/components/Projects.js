@@ -31,6 +31,8 @@ export default class Projects extends Component {
         role: 'Mechanical/Systems Engineer',
         tech: ['Simulation', 'Mechanical Design Concepts', 'Energy Conversion Systems'],
         github: 'https://github.com/KUKI-Boi/Regenerative-Suspension.git',
+        demo: 'https://kuki-boi.github.io/Regenerative-Suspension/',
+        image: 'assets/images/regen-project.png',
         caseStudy: {
           problem: 'Vehicle suspension systems traditionally dissipate significant kinetic energy as heat. The challenge is recovering this energy without compromising ride comfort or handling stability.',
           approach: 'Integrated a linear-to-rotary generator within the suspension geometry. Developed a recovery circuit to balance damping requirements with energy harvesting efficiency.',
