@@ -12,6 +12,7 @@ export default class Projects extends Component {
         role: 'Systems Engineer',
         tech: ['MATLAB', 'Simulink', 'System Modeling', 'Control Logic Design'],
         github: 'https://github.com/KUKI-Boi/hybrid-energy-storage-system.git',
+        image: 'assets/images/hess-project.png',
         caseStudy: {
           problem: 'Battery-only systems face significant thermal stress and accelerated degradation during frequent peak load transients (acceleration) and high-current regenerative braking.',
           approach: 'Developed an Intelligent Energy Management Strategy (IEMS) using a rule-based control algorithm to decouple power and energy requirements, diverting transients to supercapacitors while maintaining steady-state loads on the battery.',
@@ -73,7 +74,7 @@ export default class Projects extends Component {
                   </div>
                 </div>
                 <div class="project-visual reveal delay-200">
-                  <div class="visual-placeholder"></div>
+                  ${project.image ? `<img src="${project.image}" alt="${project.title}" class="project-img">` : `<div class="visual-placeholder"></div>`}
                 </div>
               </div>
             </div>

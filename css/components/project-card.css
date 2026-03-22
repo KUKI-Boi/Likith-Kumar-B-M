@@ -23,6 +23,11 @@
   transform: scale(1.05);
 }
 
+.project-card:hover .project-img {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
 .project-info {
   padding: var(--space-12);
   display: flex;
@@ -43,6 +48,13 @@
   height: 60%;
   background: linear-gradient(45deg, var(--bg-secondary), var(--border-subtle));
   opacity: 0.5;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
