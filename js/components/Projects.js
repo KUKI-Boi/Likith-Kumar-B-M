@@ -72,7 +72,7 @@ export default class Projects extends Component {
                   <h4 class="fs-2xl mb-4 reveal delay-100">${project.title}</h4>
                   <p class="mb-6 reveal delay-200">${project.description}</p>
                   <p class="text-secondary fs-sm mb-8 reveal delay-300">Role: ${project.role}</p>
-                  <div class="flex gap-4 reveal delay-400">
+                  <div class="flex gap-4 reveal delay-400 project-actions">
                     <button class="btn btn-primary" onclick="window.app.viewProject('${project.id}')">View Case Study</button>
                     ${project.github ? `
                       <a href="${project.github}" class="btn btn-outline" target="_blank" aria-label="GitHub" style="display:inline-flex; align-items:center; justify-content:center; padding:0.75rem; width: 48px; border-color: var(--border-subtle);">

@@ -87,6 +87,26 @@
   }
   
   .project-info {
-    padding: var(--space-8);
+    padding: var(--space-6);
+  }
+
+  .project-info h4 {
+    font-size: var(--fs-xl);
+  }
+
+  .project-actions {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .project-actions .btn {
+    flex: 1;
+    justify-content: center;
+    min-width: 48px;
+  }
+
+  .project-actions .btn:first-child {
+    flex: 2;
+    min-width: 160px;
   }
 }
