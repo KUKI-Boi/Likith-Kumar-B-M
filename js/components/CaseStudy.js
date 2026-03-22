@@ -15,7 +15,7 @@ export default class CaseStudy extends Component {
               <span class="text-accent uppercase tracking-widest fs-xs mb-2 block">${project.context}</span>
               <h2 class="fs-4xl">${project.title}</h2>
             </div>
-            <div class="flex gap-4">
+            <div class="flex gap-4 case-study-actions">
               ${project.demo ? `
                 <a href="${project.demo}" class="btn btn-primary demo-btn" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; overflow:hidden;">
                   <svg width="18" height="18" class="car-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a2 2 0 0 0-1.6-.8H8a2 2 0 0 0-1.6.8L3.7 11l-1.86.86a1 1 0 0 0-.84.99V16h3m10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm-10 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"></path></svg>
