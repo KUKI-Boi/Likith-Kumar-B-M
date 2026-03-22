@@ -1,76 +1,152 @@
-/* ============================================
-   App Bootstrap — main.js
-   Premium portfolio with dynamic components.
-   ============================================ */
+import Router from './core/Router.js';
+import Store from './core/Store.js';
+import Hero from './components/Hero.js';
+import About from './components/About.js';
+import Projects from './components/Projects.js';
+import CaseStudy from './components/CaseStudy.js';
+import Skills from './components/Skills.js';
+import Timeline from './components/Timeline.js';
+import Contact from './components/Contact.js';
+import Navbar from './components/Navbar.js';
 
-import { qs, initScrollAnimations, initSmoothScroll } from './utils/dom.js';
-import { ProjectList } from './components/ProjectList.js';
-import { SkillList } from './components/SkillList.js';
-import { Experience } from './core/Experience.js';
-
-document.addEventListener('DOMContentLoaded', () => {
-    // 0. Set JS state
-    document.documentElement.classList.add('js-enabled');
-
-    // 1. Mount Dynamic Components
-    const projectTarget = qs('#projects-target');
-    const skillTarget = qs('#skills-target');
-
-    if (projectTarget) {
-        new ProjectList(projectTarget).mount();
-    }
-
-    if (skillTarget) {
-        new SkillList(skillTarget).mount();
-    }
-
-    // 2. Core Systems
-    initScrollAnimations();
-    initSmoothScroll();
-    initMobileMenu();
-
-    // 3. Hero Entrance Sequence (slight delay for paint)
-    requestAnimationFrame(() => {
-        setTimeout(initHeroSequence, 200);
-    });
+// Initialize global state
+const store = new Store({
+  activeProject: null,
+  isModalOpen: false
 });
 
-/**
- * Mobile Menu Toggle
- */
-function initMobileMenu() {
-    const toggle = qs('.navbar__toggle');
-    const menu = qs('.navbar__links');
-    if (!toggle || !menu) return;
+// Initialize router
+const routes = {
+  '/': () => console.log('Home loaded'),
+  '/project': () => console.log('Project detail loaded')
+};
 
-    toggle.addEventListener('click', () => {
-        const isOpen = menu.classList.contains('navbar__links--open');
-        isOpen ? closeMenu() : openMenu();
-    });
+const router = new Router(routes);
 
-    // Close menu on link click
-    menu.addEventListener('click', (e) => {
-        if (e.target.closest('.navbar__link')) closeMenu();
-    });
+// App singleton for global access
+window.app = {
+  store,
+  router,
+  viewProject: (id) => {
+    const project = new Projects().projects.find(p => p.id === id);
+    if (!project) return;
+    
+    // Smooth transition out
+    const appEl = document.getElementById('app');
+    appEl.style.opacity = '0';
+    appEl.style.pointerEvents = 'none';
+    appEl.style.transition = 'opacity 0.4s ease';
 
-    function openMenu() {
-        menu.classList.add('navbar__links--open');
-        toggle.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      appEl.style.display = 'none';
+      
+      const pageContainer = document.createElement('div');
+      pageContainer.id = 'case-study-root';
+      pageContainer.className = 'page-enter';
+      document.body.appendChild(pageContainer);
+      
+      const cs = new CaseStudy({ project });
+      cs.mount(pageContainer);
+      window.scrollTo(0, 0);
+      
+      // Trigger fade in
+      requestAnimationFrame(() => {
+        pageContainer.classList.add('page-enter-active');
+      });
+    }, 400);
+  },
+  closeCaseStudy: () => {
+    const pageContainer = document.getElementById('case-study-root');
+    if (pageContainer) {
+      pageContainer.classList.remove('page-enter-active');
+      pageContainer.classList.add('page-leave-active');
+      
+      setTimeout(() => {
+        pageContainer.remove();
+        const appEl = document.getElementById('app');
+        appEl.style.display = 'block';
+        
+        requestAnimationFrame(() => {
+          appEl.style.pointerEvents = 'auto';
+          appEl.style.opacity = '1';
+        });
+      }, 400);
     }
+  }
+};
 
-    function closeMenu() {
-        menu.classList.remove('navbar__links--open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+// Scroll Reveal Logic
+const revealOnScroll = () => {
+  const reveals = document.querySelectorAll('.reveal');
+  const windowHeight = window.innerHeight;
+  const revealPoint = 150;
+
+  reveals.forEach(reveal => {
+    const revealTop = reveal.getBoundingClientRect().top;
+    if (revealTop < windowHeight - revealPoint) {
+      reveal.classList.add('active');
     }
-}
+  });
+};
 
-/**
- * Hero Entrance — triggers CSS transitions via class addition.
- * Uses data-animate-hero elements with staggered delays in animations.css.
- */
-function initHeroSequence() {
-    const elements = document.querySelectorAll('[data-animate-hero]');
-    elements.forEach(el => el.classList.add('hero-loaded'));
-}
+// Initial setup
+document.addEventListener('DOMContentLoaded', () => {
+  const heroContainer = document.getElementById('hero');
+  const hero = new Hero();
+  hero.mount(heroContainer);
+
+  const aboutContainer = document.getElementById('about');
+  const about = new About();
+  about.mount(aboutContainer);
+
+  const projectsContainer = document.getElementById('projects');
+  const projects = new Projects();
+  projects.mount(projectsContainer);
+
+  const skillsContainer = document.getElementById('skills');
+  const skills = new Skills();
+  skills.mount(skillsContainer);
+
+  const timelineContainer = document.getElementById('timeline');
+  const timeline = new Timeline();
+  timeline.mount(timelineContainer);
+
+  const contactContainer = document.getElementById('contact');
+  const contact = new Contact();
+  contact.mount(contactContainer);
+
+  const navContainer = document.getElementById('navbar');
+  const nav = new Navbar();
+  nav.mount(navContainer);
+
+  router.init();
+  window.addEventListener('scroll', revealOnScroll);
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  
+  // Custom cursor glow
+  const appElement = document.getElementById('app');
+  const glowElement = document.createElement('div');
+  glowElement.classList.add('cursor-glow');
+  appElement.appendChild(glowElement);
+
+  window.addEventListener('mousemove', (e) => {
+    // Only show glow on desktop
+    if (window.innerWidth > 768) {
+      // Use requestAnimationFrame for performance if needed, but simple style update is fast
+      const x = e.clientX;
+      const y = e.clientY;
+      glowElement.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(77, 163, 255, 0.05), transparent 40%)`;
+    }
+  });
+
+  revealOnScroll(); // Trigger once on load
+});

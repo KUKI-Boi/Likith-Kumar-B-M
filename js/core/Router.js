@@ -1,80 +1,25 @@
-/* ============================================
-   Router — Router.js
-   Minimal hash-based SPA router.
-   ============================================ */
+export default class Router {
+  constructor(routes) {
+    this.routes = routes;
+    this.currentPath = null;
+    window.addEventListener('popstate', () => this.handleRoute());
+  }
 
-export class Router {
-    constructor() {
-        /** @type {Map<string, Function>} */
-        this.routes = new Map();
+  init() {
+    this.handleRoute();
+  }
 
-        /** @type {HTMLElement|null} */
-        this.outlet = null;
+  navigate(path) {
+    window.history.pushState({}, '', path);
+    this.handleRoute();
+  }
 
-        this._onHashChange = this._onHashChange.bind(this);
+  handleRoute() {
+    const path = window.location.pathname;
+    this.currentPath = path;
+    const route = this.routes[path] || this.routes['/'];
+    if (route) {
+      route();
     }
-
-    /**
-     * Set the DOM element where page content will be rendered.
-     * @param {HTMLElement} element
-     * @returns {Router}
-     */
-    setOutlet(element) {
-        this.outlet = element;
-        return this;
-    }
-
-    /**
-     * Register a route.
-     * @param {string}   path    - Route path (e.g., '/about').
-     * @param {Function} handler - Function that returns HTML string or mounts a Component.
-     * @returns {Router}
-     */
-    on(path, handler) {
-        this.routes.set(path, handler);
-        return this;
-    }
-
-    /**
-     * Start listening for hash changes and render the initial route.
-     */
-    start() {
-        window.addEventListener('hashchange', this._onHashChange);
-        this._onHashChange();
-    }
-
-    /**
-     * Stop listening for hash changes.
-     */
-    stop() {
-        window.removeEventListener('hashchange', this._onHashChange);
-    }
-
-    /**
-     * Navigate programmatically.
-     * @param {string} path
-     */
-    navigate(path) {
-        window.location.hash = `#${path}`;
-    }
-
-    /**
-     * Get the current route path from the hash.
-     * @returns {string}
-     */
-    getCurrentPath() {
-        return window.location.hash.slice(1) || '/';
-    }
-
-    /**
-     * @private
-     */
-    _onHashChange() {
-        const path = this.getCurrentPath();
-        const handler = this.routes.get(path) || this.routes.get('*');
-
-        if (handler && this.outlet) {
-            handler(this.outlet);
-        }
-    }
+  }
 }
