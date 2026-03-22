@@ -1,11 +1,28 @@
 export default async function handler(req, res) {
-  // Only allow POST requests for security
+  // 1. CORS / Origin Protection
+  const origin = req.headers.origin || req.headers.referer;
+  const allowedOrigins = [
+    'https://likith-kumar-b-m.vercel.app',
+    'https://portfolio-liart-eight-34.vercel.app',
+    'http://localhost:3000',
+    'http://localhost:5500',
+    'http://127.0.0.1:5500'
+  ];
+
+  const isAllowed = allowedOrigins.some(ao => origin && origin.startsWith(ao));
+  
+  if (!isAllowed && process.env.NODE_ENV === 'production') {
+    console.warn(`Blocked unauthorized origin: ${origin}`);
+    return res.status(403).json({ success: false, message: 'Unauthorized Request Origin.' });
+  }
+
+  // 2. Only allow POST requests for security
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
+    return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }
 
   try {
-    // Vercel handles JSON parsing automatically when headers are set
+    // 3. Input Sanitization & Validation
     const { name, email, message } = req.body || {};
 
     if (!name || !email || !message) {
@@ -15,12 +32,17 @@ export default async function handler(req, res) {
       });
     }
 
+    // Basic sanitization
+    const safeName = (name || 'Anonymous').replace(/[^\w\s]/gi, '').substring(0, 100);
+    const safeEmail = (email || '').substring(0, 255);
+    const safeMessage = (message || '').substring(0, 5000);
+
     const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
     if (!accessKey) {
       console.error('CRITICAL: WEB3FORMS_ACCESS_KEY is not defined in Vercel settings.');
-      return res.status(500).json({
-        success: false,
-        message: 'Backend Configuration Error: API Key missing in environment variables.'
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Backend Configuration Error: API Key missing in environment variables.' 
       });
     }
 
