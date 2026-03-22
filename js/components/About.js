@@ -29,9 +29,6 @@ export default class About extends Component {
             <div class="visual-box">
               <img src="assets/images/profile.jpg" alt="Likith Kumar" class="profile-img">
               <div class="visual-overlay"></div>
-              <div class="visual-content">
-                <p class="text-accent">CLARITY. DEPTH. ENGINEERING.</p>
-              </div>
             </div>
           </div>
         </div>
