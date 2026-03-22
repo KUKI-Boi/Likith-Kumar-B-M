@@ -8,6 +8,7 @@ import Skills from './components/Skills.js';
 import Timeline from './components/Timeline.js';
 import Contact from './components/Contact.js';
 import Navbar from './components/Navbar.js';
+import Background from './components/Background.js';
 
 // Initialize global state
 const store = new Store({
@@ -91,6 +92,8 @@ const revealOnScroll = () => {
 
 // Initial setup
 document.addEventListener('DOMContentLoaded', () => {
+  new Background(); // Initialize interactive canvas background
+  
   const heroContainer = document.getElementById('hero');
   const hero = new Hero();
   hero.mount(heroContainer);
