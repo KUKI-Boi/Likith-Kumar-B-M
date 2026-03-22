@@ -31,7 +31,7 @@ window.app = {
   viewProject: (id) => {
     const project = new Projects().projects.find(p => p.id === id);
     if (!project) return;
-    
+
     // Smooth transition out
     const appEl = document.getElementById('app');
     appEl.style.opacity = '0';
@@ -40,16 +40,16 @@ window.app = {
 
     setTimeout(() => {
       appEl.style.display = 'none';
-      
+
       const pageContainer = document.createElement('div');
       pageContainer.id = 'case-study-root';
       pageContainer.className = 'page-enter';
       document.body.appendChild(pageContainer);
-      
+
       const cs = new CaseStudy({ project });
       cs.mount(pageContainer);
       window.scrollTo(0, 0);
-      
+
       // Trigger fade in
       requestAnimationFrame(() => {
         pageContainer.classList.add('page-enter-active');
@@ -61,12 +61,12 @@ window.app = {
     if (pageContainer) {
       pageContainer.classList.remove('page-enter-active');
       pageContainer.classList.add('page-leave-active');
-      
+
       setTimeout(() => {
         pageContainer.remove();
         const appEl = document.getElementById('app');
         appEl.style.display = 'block';
-        
+
         requestAnimationFrame(() => {
           appEl.style.pointerEvents = 'auto';
           appEl.style.opacity = '1';
@@ -93,7 +93,7 @@ const revealOnScroll = () => {
 // Initial setup
 document.addEventListener('DOMContentLoaded', () => {
   new Background(); // Initialize interactive canvas background
-  
+
   const heroContainer = document.getElementById('hero');
   const hero = new Hero();
   hero.mount(heroContainer);
@@ -118,6 +118,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const contact = new Contact();
   contact.mount(contactContainer);
 
+  // Contact Form Submission Handler
+  const form = document.getElementById('contact-form');
+  if (form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      submitButton.textContent = 'Sending...';
+      
+      const formData = new FormData(form);
+      formData.append("access_key", "4a6cb5b4-60c6-4136-a032-236ba48207a8");
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          submitButton.textContent = 'Message Sent! ✓';
+          submitButton.style.backgroundColor = '#28a745'; // Success green
+          submitButton.style.borderColor = '#28a745';
+          submitButton.style.color = '#fff';
+          form.reset();
+          
+          setTimeout(() => {
+            submitButton.textContent = 'Send Message →';
+            submitButton.style = ''; // Reset inline styles
+          }, 5000);
+        } else {
+          console.error(response);
+          submitButton.textContent = 'Error: Try Again';
+          setTimeout(() => submitButton.textContent = 'Send Message →', 3000);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        submitButton.textContent = 'Error: Try Again';
+        setTimeout(() => submitButton.textContent = 'Send Message →', 3000);
+      });
+    });
+  }
+
   const navContainer = document.getElementById('navbar');
   const nav = new Navbar();
   nav.mount(navContainer);
@@ -134,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.classList.remove('scrolled');
     }
   });
-  
+
   // Custom cursor glow
   const appElement = document.getElementById('app');
   const glowElement = document.createElement('div');

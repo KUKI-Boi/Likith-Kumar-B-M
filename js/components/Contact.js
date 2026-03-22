@@ -30,19 +30,21 @@ export default class Contact extends Component {
           
           <div class="contact-form-container reveal delay-200 col-span-7">
             <form id="contact-form" class="contact-form">
+              <input type="hidden" name="subject" value="New Contact Form Submission - Likith Kumar Portfolio">
+              <input type="hidden" name="from_name" value="LK Portfolio">
               <div class="form-group mb-6">
                 <label for="name" class="fs-xs uppercase tracking-widest mb-2 block">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" class="form-input">
+                <input type="text" id="name" name="name" placeholder="Your Name" class="form-input" required>
               </div>
               <div class="form-group mb-6">
                 <label for="email" class="fs-xs uppercase tracking-widest mb-2 block">Email</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" class="form-input">
+                <input type="email" id="email" name="email" placeholder="your@email.com" class="form-input" required>
               </div>
               <div class="form-group mb-8">
                 <label for="message" class="fs-xs uppercase tracking-widest mb-2 block">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="How can we collaborate?" class="form-input"></textarea>
+                <textarea id="message" name="message" rows="5" placeholder="How can we collaborate?" class="form-input" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary w-full">Send Message →</button>
+              <button type="submit" class="btn btn-primary w-full" style="transition: all 0.3s ease;">Send Message →</button>
             </form>
           </div>
         </div>
