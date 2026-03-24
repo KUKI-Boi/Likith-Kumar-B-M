@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   ];
 
   const isAllowed = allowedOrigins.some(ao => origin && origin.startsWith(ao));
-  
+
   if (!isAllowed && process.env.NODE_ENV === 'production') {
     console.warn(`Blocked unauthorized origin: ${origin}`);
     return res.status(403).json({ success: false, message: 'Unauthorized Request Origin.' });
@@ -40,9 +40,9 @@ export default async function handler(req, res) {
     const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
     if (!accessKey) {
       console.error('CRITICAL: WEB3FORMS_ACCESS_KEY is not defined in Vercel settings.');
-      return res.status(500).json({ 
-        success: false, 
-        message: 'Backend Configuration Error: API Key missing in environment variables.' 
+      return res.status(500).json({
+        success: false,
+        message: 'Backend Configuration Error: API Key missing in environment variables.'
       });
     }
 
