@@ -5,19 +5,28 @@ export default class Timeline extends Component {
     super(props);
     this.entries = [
       {
+        year: '2025',
+        title: 'Co-Founder — Verblyn Labs',
+        impact: 'Product direction, feature planning, and building the first working version of the platform in a collaborative early-stage environment.',
+        logo: 'assets/logos/verblyn-labs-logo.png'
+      },
+      {
         year: 'Present',
         title: 'IEEE PELS Webmaster',
-        impact: 'Organized technical events, fostering engineering education and professional networking.'
+        impact: 'Organized technical events, fostering engineering education and professional networking.',
+        logo: null
       },
       {
         year: '2025',
         title: 'Power & Energy Society (PES) Member',
-        impact: 'Participated actively in social and technical initiatives aimed at advancing energy technology.'
+        impact: 'Participated actively in social and technical initiatives aimed at advancing energy technology.',
+        logo: null
       },
       {
         year: '2025',
         title: 'Hackathon Winner',
-        impact: 'Developed innovative, high-impact engineering solutions under intense time constraints.'
+        impact: 'Developed innovative, high-impact engineering solutions under intense time constraints.',
+        logo: null
       }
     ];
   }
@@ -30,15 +39,22 @@ export default class Timeline extends Component {
 
         <div class="timeline reveal draw-line">
           ${this.entries.map((entry, index) => {
-            const delay = (index % 3 + 1) * 100; // 100, 200, 300 ms delays
+            const delay = (index % 3 + 1) * 100;
             return `
             <div class="timeline-item reveal delay-${delay}">
               <div class="timeline-date">
                 <span class="year text-accent">${entry.year}</span>
               </div>
-              <div class="timeline-content">
-                <h4 class="fs-xl mb-2">${entry.title}</h4>
-                <p>${entry.impact}</p>
+              <div class="timeline-content flex items-start gap-4">
+                ${entry.logo ? `
+                  <div class="timeline-logo border border-subtle p-2 bg-secondary rounded-lg" style="width: 60px; height: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                    <img src="${entry.logo}" alt="${entry.title}" style="width: 100%; height: 100%; object-fit: contain;">
+                  </div>
+                ` : ''}
+                <div>
+                  <h4 class="fs-xl mb-2">${entry.title}</h4>
+                  <p class="text-secondary">${entry.impact}</p>
+                </div>
               </div>
             </div>
           `}).join('')}
