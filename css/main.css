@@ -431,6 +431,14 @@
   border-color: var(--accent);
 }
 
+.hover-accent {
+  transition: color 0.3s ease;
+}
+
+.hover-accent:hover {
+  color: var(--accent) !important;
+}
+
 @media (max-width: 768px) {
   .timeline::before {
     left: 20px;

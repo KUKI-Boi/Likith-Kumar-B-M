@@ -49,7 +49,9 @@ export default class Timeline extends Component {
               <div class="timeline-content flex items-start gap-4">
                 ${entry.logo ? `
                   <div class="timeline-logo border border-subtle p-2 bg-secondary rounded-lg" style="width: 60px; height: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="${entry.logo}" alt="${entry.title}" style="width: 100%; height: 100%; object-fit: contain;">
+                    ${entry.link ? `<a href="${entry.link}" target="_blank" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">` : ''}
+                      <img src="${entry.logo}" alt="${entry.title}" style="width: 100%; height: 100%; object-fit: contain;">
+                    ${entry.link ? `</a>` : ''}
                   </div>
                 ` : ''}
                 <div>
