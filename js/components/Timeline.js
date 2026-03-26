@@ -39,8 +39,8 @@ export default class Timeline extends Component {
 
         <div class="timeline reveal draw-line">
           ${this.entries.map((entry, index) => {
-            const delay = (index % 3 + 1) * 100;
-            return `
+      const delay = (index % 3 + 1) * 100;
+      return `
             <div class="timeline-item reveal delay-${delay}">
               <div class="timeline-date">
                 <span class="year text-accent">${entry.year}</span>
