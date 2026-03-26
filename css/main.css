@@ -393,7 +393,7 @@
 .timeline-item {
   display: flex;
   justify-content: flex-end;
-  padding-right: calc(50% + 30px);
+  padding-right: calc(50% + 60px);
   position: relative;
   margin-bottom: var(--space-12);
 }
@@ -401,7 +401,7 @@
 .timeline-item:nth-child(even) {
   justify-content: flex-start;
   padding-right: 0;
-  padding-left: calc(50% + 30px);
+  padding-left: calc(50% + 60px);
 }
 
 .timeline-date {
