@@ -5,10 +5,11 @@ export default class Timeline extends Component {
     super(props);
     this.entries = [
       {
-        year: '2025',
+        year: 'Present',
         title: 'Co-Founder — Verblyn Labs',
         impact: 'Product direction, feature planning, and building the first working version of the platform in a collaborative early-stage environment.',
-        logo: 'assets/logos/verblyn-labs-logo.png'
+        logo: 'assets/logos/verblyn-labs-logo.png',
+        link: 'https://www.linkedin.com/company/verblynlabs/'
       },
       {
         year: 'Present',
@@ -52,7 +53,9 @@ export default class Timeline extends Component {
                   </div>
                 ` : ''}
                 <div>
-                  <h4 class="fs-xl mb-2">${entry.title}</h4>
+                  <h4 class="fs-xl mb-2">
+                    ${entry.link ? `<a href="${entry.link}" target="_blank" class="hover-accent" style="color: inherit; text-decoration: none;">${entry.title}</a>` : entry.title}
+                  </h4>
                   <p class="text-secondary">${entry.impact}</p>
                 </div>
               </div>

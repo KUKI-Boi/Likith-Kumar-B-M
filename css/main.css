@@ -393,15 +393,15 @@
 .timeline-item {
   display: flex;
   justify-content: flex-end;
-  padding-right: 50%;
+  padding-right: calc(50% + 30px);
   position: relative;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-12);
 }
 
 .timeline-item:nth-child(even) {
   justify-content: flex-start;
   padding-right: 0;
-  padding-left: 50%;
+  padding-left: calc(50% + 30px);
 }
 
 .timeline-date {
@@ -419,14 +419,12 @@
   border: 1px solid var(--border-subtle);
   padding: var(--space-8);
   border-radius: 4px;
-  width: 80%;
-  margin-right: var(--space-8);
+  width: 95%;
   transition: var(--transition-base);
 }
 
 .timeline-item:nth-child(even) .timeline-content {
   margin-right: 0;
-  margin-left: var(--space-8);
 }
 
 .timeline-item:hover .timeline-content {
