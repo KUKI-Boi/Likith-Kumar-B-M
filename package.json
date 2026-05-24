@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "vercel build",
+    "start": "node server.js"
+  },
   "devDependencies": {
-    "vercel": "latest"
+    "vercel": "^50.41.0"
   }
 }
