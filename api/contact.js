@@ -1,7 +1,13 @@
 export default async function handler(req, res) {
   // 1. CORS / Origin Protection
   const origin = req.headers.origin || req.headers.referer;
+  
+  const envOrigins = process.env.ALLOWED_ORIGINS 
+    ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim()) 
+    : [];
+
   const allowedOrigins = [
+    ...envOrigins,
     'https://likith-kumar-b-m.vercel.app',
     'https://portfolio-liart-eight-34.vercel.app',
     'http://localhost:3000',
