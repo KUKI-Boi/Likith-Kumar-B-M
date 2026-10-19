@@ -53,6 +53,25 @@ export default class Projects extends Component {
           approach: 'Applied State-Space modeling and frequency-domain analysis to design controllers. Verified reliability using Nyquist and Bode stability techniques.',
           outcome: 'Reduced system overshoot by 15% and improved steady-state error margins, providing a robust framework for autonomous navigation and robotic actuation.'
         }
+      },
+      {
+        id: 'crop-disease-surveillance',
+        title: 'Crop Health & Disease Surveillance',
+        context: 'Computer Vision & Agriculture',
+        description: 'Developed an algorithmic computer vision pipeline for drone-based aerial crop monitoring to detect plant leaf diseases, segment healthy vs. infected vegetation, and quantify infection severity.',
+        role: 'Computer Vision Engineer',
+        tech: ['Python', 'OpenCV', 'NumPy', 'Streamlit', 'Image Segmentation'],
+        github: 'https://github.com/KUKI-Boi/Crop-Health-and-Disease-Surveillance.git',
+        demo: 'https://crophealthanddiseasesurveillance.streamlit.app/',
+        image: 'assets/images/crop-project.png',
+        caseStudy: {
+          problem: 'Farmers often detect crop infections only after irreversible yield loss has occurred. Manual field inspection across expansive agricultural acreage is labor-intensive, error-prone, and slow.',
+          approach: 'Implemented a classical non-deep-learning computer vision pipeline using OpenCV, color conversions (HSV, Lab, Excess Green Index - ExG), and adaptive Otsu thresholding to segment healthy leaves and isolate disease spots dynamically.',
+          design: 'Engineered a multi-stage architecture comprising dynamic label inspection, vegetation index extraction, pixel area severity categorization, and automated markdown academic report generation.',
+          challenges: 'Handling varying ambient illumination conditions, natural shadow artifacts, and diverse color textures of diseases (e.g., wheat stripe rust, soybean bacterial blight) without overfitting.',
+          outcome: 'Achieved high-precision segmentation of infection areas, dynamic area percentage calculations, and deployed a live interactive Streamlit web dashboard for field diagnostic evaluation.',
+          learnings: 'Mastered mathematical image morphology, spectral vegetation indices (ExG), and designing lightweight, interpretable CV pipelines suitable for edge drone hardware.'
+        }
       }
     ];
   }
