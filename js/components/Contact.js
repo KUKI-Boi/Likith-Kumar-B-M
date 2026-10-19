@@ -30,8 +30,10 @@ export default class Contact extends Component {
           
           <div class="contact-form-container reveal delay-200 col-span-7">
             <form id="contact-form" class="contact-form">
+              <input type="hidden" name="access_key" value="4a6cb5b4-60c6-4136-a032-236ba48207a8">
               <input type="hidden" name="subject" value="New Contact Form Submission - Likith Kumar Portfolio">
               <input type="hidden" name="from_name" value="LK Portfolio">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
               <div class="form-group mb-6">
                 <label for="name" class="fs-xs uppercase tracking-widest mb-2 block">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your Name" class="form-input" required>

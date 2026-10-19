@@ -124,42 +124,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = form.querySelector('button[type="submit"]');
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+      submitButton.disabled = true;
       submitButton.textContent = 'Sending...';
       
       const formData = new FormData(form);
-      const payload = Object.fromEntries(formData);
 
-      fetch('/api/contact', {
+      // Web3Forms standard client-side submission with FormData
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
+        body: formData
       })
       .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
+        const json = await response.json();
+        if (response.ok && json.success) {
           submitButton.textContent = 'Message Sent! ✓';
-          submitButton.style.backgroundColor = '#28a745'; // Success green
+          submitButton.style.backgroundColor = '#28a745';
           submitButton.style.borderColor = '#28a745';
           submitButton.style.color = '#fff';
           form.reset();
           
           setTimeout(() => {
             submitButton.textContent = 'Send Message →';
-            submitButton.style = ''; // Reset inline styles
+            submitButton.style = '';
+            submitButton.disabled = false;
           }, 5000);
         } else {
-          console.error('Server error:', json);
+          console.error('Web3Forms response error:', json);
           submitButton.textContent = json.message || 'Error: Try Again';
-          setTimeout(() => submitButton.textContent = 'Send Message →', 3000);
+          submitButton.disabled = false;
+          setTimeout(() => {
+            submitButton.textContent = 'Send Message →';
+          }, 4000);
         }
       })
       .catch(error => {
-        console.error('Network/Fetch error:', error);
+        console.error('Submission error:', error);
         submitButton.textContent = 'Connection Error';
-        setTimeout(() => submitButton.textContent = 'Send Message →', 3000);
+        submitButton.disabled = false;
+        setTimeout(() => {
+          submitButton.textContent = 'Send Message →';
+        }, 4000);
       });
     });
   }
