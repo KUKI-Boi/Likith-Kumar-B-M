@@ -87,7 +87,48 @@ export default class Projects extends Component {
                   </div>
                 </div>
                 <div class="project-visual reveal delay-200">
-                  ${project.image ? `<img src="${project.image}" alt="${project.title}" class="project-img">` : `<div class="visual-placeholder"></div>`}
+                  ${project.demo ? `
+                    <div class="browser-mockup">
+                      <div class="browser-header">
+                        <div class="browser-dots">
+                          <span class="dot dot-red"></span>
+                          <span class="dot dot-yellow"></span>
+                          <span class="dot dot-green"></span>
+                        </div>
+                        <div class="browser-url-bar">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lock-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                          <span class="browser-url-text">${project.demo.replace('https://', '')}</span>
+                        </div>
+                        <a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="browser-external-link" title="Open live site">
+                          <span>LIVE</span>
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                        </a>
+                      </div>
+                      <div class="browser-viewport">
+                        <div class="browser-scroll-badge">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                          <span>SCROLL INSIDE — IT'S LIVE</span>
+                        </div>
+                        <iframe 
+                          src="${project.demo}" 
+                          title="${project.title} Live Preview"
+                          class="browser-iframe" 
+                          loading="lazy" 
+                          sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+                        </iframe>
+                      </div>
+                      <div class="browser-footer">
+                        <div class="footer-status">
+                          <span class="status-indicator"></span>
+                          <span class="footer-url">${project.demo.replace('https://', '')}</span>
+                        </div>
+                        <a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="browser-footer-btn">
+                          <span class="status-pulse"></span>
+                          <span>LIVE — OPEN ↗</span>
+                        </a>
+                      </div>
+                    </div>
+                  ` : (project.image ? `<img src="${project.image}" alt="${project.title}" class="project-img">` : `<div class="visual-placeholder"></div>`)}
                 </div>
               </div>
             </div>
