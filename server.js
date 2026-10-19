@@ -123,9 +123,10 @@ const server = http.createServer(async (req, res) => {
   // Serve static files
   let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
 
-  // Security: check path traversal
+  // Security: check path traversal and block dotfiles (.env, .git, etc.)
   const resolvedPath = path.resolve(filePath);
-  if (!resolvedPath.startsWith(path.resolve(__dirname))) {
+  const baseName = path.basename(resolvedPath);
+  if (!resolvedPath.startsWith(path.resolve(__dirname)) || baseName.startsWith('.')) {
     res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
     res.end('Forbidden');
     return;
