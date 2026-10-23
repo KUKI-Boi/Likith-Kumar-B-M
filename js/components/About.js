@@ -24,6 +24,16 @@ export default class About extends Component {
                 <span class="stat-label">Tech Stack</span>
               </div>
             </div>
+            <div class="about-meta-chips flex flex-wrap gap-3 mt-6 reveal delay-400">
+              <div class="about-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Bengaluru, India</span>
+              </div>
+              <div class="about-chip">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                <span>Christ (Deemed to be University)</span>
+              </div>
+            </div>
           </div>
           <div class="about-visual reveal delay-200 col-span-5">
             <div class="visual-box">

@@ -165,33 +165,53 @@
             transform: translateY(-2px);
         }
 
+        @page {
+            size: auto;
+            margin: 0mm;
+        }
+
         @media print {
-            body {
-                background: white;
-                color: black;
-                padding: 0;
+            @page {
+                size: auto;
+                margin: 0mm;
             }
+
+            html, body {
+                background: white !important;
+                color: black !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
             .resume-container {
-                max-width: 100%;
-                margin: 0;
-                padding: 0;
-                background: white;
-                border: none;
+                max-width: 100% !important;
+                margin: 0 auto !important;
+                padding: 12mm 15mm !important;
+                background: white !important;
+                border: none !important;
+                box-shadow: none !important;
             }
+
             .no-print-actions {
-                display: none;
+                display: none !important;
             }
+
             h1, h2, .item-title, b {
-                color: black;
+                color: black !important;
             }
+
             .contact-info, .item-date, li, .tech-stack {
-                color: #333;
+                color: #333 !important;
             }
+
             h2 {
-                border-left-color: #333;
+                border-left-color: #333 !important;
             }
+
             li::before {
-                color: black;
+                color: black !important;
             }
         }
 
@@ -266,6 +286,7 @@
             <h1>Likith Kumar</h1>
             <div class="contact-info">
                 <span>likithkumarbm@gmail.com</span>
+                <span>Bengaluru, India</span>
                 <a href="https://linkedin.com/in/likith-kumar-b-m-602ba8315/" target="_blank">LinkedIn</a>
                 <a href="https://github.com/KUKI-Boi" target="_blank">GitHub</a>
             </div>
@@ -275,6 +296,19 @@
             <h2>Professional Summary</h2>
             <div class="section-content">
                 <p>Engineering student focused on electric mobility, control systems, and intelligent system design. Specialized in building efficient, scalable solutions integrating hardware, software, and systems thinking. Dedicated to solving complex engineering challenges in next-generation mobility through rigorous modeling and optimization.</p>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="section-content">
+                <div class="exp-item" style="margin-bottom: 0;">
+                    <div class="item-header">
+                        <span class="item-title">Christ (Deemed to be University)</span>
+                        <span class="item-date">Bengaluru, India</span>
+                    </div>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.25rem;">Bachelor of Technology (B.Tech) in Electrical and Electronics Engineering</p>
+                </div>
             </div>
         </section>
 
@@ -305,24 +339,24 @@
 
                 <div class="project-item">
                     <div class="item-header">
-                        <span class="item-title">Electromagnetic Regenerative Suspension</span>
+                        <span class="item-title">EV Regenerative Suspension & Energy Harvesting Simulator</span>
                     </div>
                     <ul>
-                        <li>Designed an electromechanical recovery system capturing vertical vehicle oscillations.</li>
-                        <li>Modeled a potential recoverability of up to 100W per wheel under standard conditions.</li>
+                        <li>Engineered a multi-physics web simulator capturing vertical road vibrations via linear-to-rotary generation into supercapacitors.</li>
+                        <li>Modeled potential recovery of up to 100W per wheel under standard road roughness without compromising ride stability.</li>
                     </ul>
-                    <div class="tech-stack"><b>Tech:</b> Simulation, Mechanical Design Concepts, Energy Conversion Systems</div>
+                    <div class="tech-stack"><b>Tech:</b> JavaScript (ES6), HTML5 Canvas, Real-Time Physics, Hybrid Storage (HESS)</div>
                 </div>
 
                 <div class="project-item">
                     <div class="item-header">
-                        <span class="item-title">Optimal Control Strategy for Dynamic Systems</span>
+                        <span class="item-title">3-DOF Aircraft Altitude Hold Autopilot (Cascade PID)</span>
                     </div>
                     <ul>
-                        <li>Developed precision control solutions focusing on minimizing settling time and overshoot (reduced by 15%).</li>
-                        <li>Applied State-Space modeling and frequency-domain analysis (Nyquist/Bode) for robust stability.</li>
+                        <li>Designed a cascade PID autopilot in MATLAB/Simulink for a 3-DOF longitudinal aircraft model using Aerospace Blockset.</li>
+                        <li>Decoupled fast pitch attitude dynamics from altitude tracking, reducing climb overshoot by over 15% with zero steady-state error.</li>
                     </ul>
-                    <div class="tech-stack"><b>Tech:</b> Control Systems, MATLAB, System Modeling</div>
+                    <div class="tech-stack"><b>Tech:</b> MATLAB, Simulink, Aerospace Blockset, Cascade PID Control, Flight Dynamics</div>
                 </div>
             </div>
         </section>
@@ -347,6 +381,16 @@
                     </div>
                     <ul>
                         <li>Managed technical event communications and digital presence for the power electronics community.</li>
+                    </ul>
+                </div>
+                <div class="exp-item">
+                    <div class="item-header">
+                        <span class="item-title">Mahatma Gandhi Institute of Rural Energy & Development (MGIRED) | Renewable Energy Engineer Intern</span>
+                        <span class="item-date">Apr 2026 – May 2026</span>
+                    </div>
+                    <ul>
+                        <li>Gained practical experience in Solar PV performance testing, solar tricycle reconstruction planning, and Pico Hydro systems.</li>
+                        <li>Contributed to the development of a responsive, bilingual institutional website while supporting laboratory activities and sustainable energy initiatives.</li>
                     </ul>
                 </div>
                 <div class="exp-item">

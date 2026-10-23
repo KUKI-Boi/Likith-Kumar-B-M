@@ -120,8 +120,9 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // Serve static files
-  let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
+  // Serve static files (decoded to handle spaces and encoded characters)
+  const decodedPath = decodeURIComponent(pathname);
+  let filePath = path.join(__dirname, decodedPath === '/' ? 'index.html' : decodedPath);
 
   // Security: check path traversal and block dotfiles (.env, .git, etc.)
   const resolvedPath = path.resolve(filePath);

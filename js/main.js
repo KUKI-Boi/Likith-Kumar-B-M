@@ -32,6 +32,9 @@ window.app = {
     const project = new Projects().projects.find(p => p.id === id);
     if (!project) return;
 
+    window.app.lastOpenedProjectId = id;
+    window.app.savedScrollY = window.scrollY;
+
     // Smooth transition out
     const appEl = document.getElementById('app');
     appEl.style.opacity = '0';
@@ -67,11 +70,101 @@ window.app = {
         const appEl = document.getElementById('app');
         appEl.style.display = 'block';
 
+        // Scroll directly back to the project card that was opened
+        const targetCard = window.app.lastOpenedProjectId
+          ? document.querySelector(`.project-item[data-id="${window.app.lastOpenedProjectId}"]`)
+          : null;
+
+        if (targetCard) {
+          targetCard.scrollIntoView({ behavior: 'instant', block: 'center' });
+        } else if (window.app.savedScrollY !== undefined) {
+          window.scrollTo({ top: window.app.savedScrollY, behavior: 'instant' });
+        } else {
+          const projectsSection = document.getElementById('projects');
+          if (projectsSection) {
+            projectsSection.scrollIntoView({ behavior: 'instant', block: 'start' });
+          }
+        }
+
+        // Re-evaluate scroll reveal for newly visible elements
+        revealOnScroll();
+
         requestAnimationFrame(() => {
           appEl.style.pointerEvents = 'auto';
           appEl.style.opacity = '1';
         });
       }, 400);
+    }
+  },
+  viewCredentials: (encodedData) => {
+    try {
+      const data = JSON.parse(decodeURIComponent(encodedData));
+      const creds = data.credentials || [data];
+      let modal = document.getElementById('credential-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'credential-modal';
+        modal.className = 'credential-modal-backdrop';
+        modal.innerHTML = `
+          <div class="credential-modal-container">
+            <div class="credential-modal-header">
+              <h3 id="credential-modal-title" class="credential-modal-title"></h3>
+              <button type="button" class="credential-close-btn" onclick="window.app.closeCredentialModal()" aria-label="Close modal">×</button>
+            </div>
+            <div id="credential-modal-body" class="credential-modal-body"></div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            window.app.closeCredentialModal();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            window.app.closeCredentialModal();
+          }
+        });
+      }
+
+      document.getElementById('credential-modal-title').textContent = data.title || 'Credential Verification';
+      const bodyEl = document.getElementById('credential-modal-body');
+      
+      bodyEl.innerHTML = creds.map((cred, idx) => `
+        <div class="credential-item-card">
+          ${creds.length > 1 ? `<div class="credential-item-title">${cred.title || `Certificate ${idx + 1}`}</div>` : ''}
+          <div class="credential-img-wrapper">
+            <img src="${cred.image}" alt="${cred.title || 'Credential'}" class="credential-modal-image">
+          </div>
+          <div class="credential-item-footer">
+            <a href="${cred.image}" target="_blank" class="btn btn-outline credential-download-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              <span>Open Full Resolution</span>
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    } catch (err) {
+      console.error('Error opening credential modal:', err);
+    }
+  },
+  viewCredential: (encodedCred) => {
+    window.app.viewCredentials(encodedCred);
+  },
+  closeCredentialModal: () => {
+    const modal = document.getElementById('credential-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
     }
   }
 };
